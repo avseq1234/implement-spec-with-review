@@ -1,0 +1,7 @@
+
+test_interfaces_exist (test_baseline.Baseline.test_interfaces_exist) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK

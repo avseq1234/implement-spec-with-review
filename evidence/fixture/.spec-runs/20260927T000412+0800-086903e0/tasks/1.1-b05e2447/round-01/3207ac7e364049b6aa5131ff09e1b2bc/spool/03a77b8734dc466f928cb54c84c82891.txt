@@ -1,0 +1,109 @@
+
+test_interfaces_exist (test_baseline.Baseline.test_interfaces_exist) ... ok
+test_accepts_positive_builtin_integers (test_positive_integer.ValidatePositiveIntegerTests.test_accepts_positive_builtin_integers) ... FAIL
+test_rejects_bool_and_other_non_builtin_integer_types (test_positive_integer.ValidatePositiveIntegerTests.test_rejects_bool_and_other_non_builtin_integer_types) ... 
+  test_rejects_bool_and_other_non_builtin_integer_types (test_positive_integer.ValidatePositiveIntegerTests.test_rejects_bool_and_other_non_builtin_integer_types) (value=True) ... FAIL
+  test_rejects_bool_and_other_non_builtin_integer_types (test_positive_integer.ValidatePositiveIntegerTests.test_rejects_bool_and_other_non_builtin_integer_types) (value=False) ... FAIL
+  test_rejects_bool_and_other_non_builtin_integer_types (test_positive_integer.ValidatePositiveIntegerTests.test_rejects_bool_and_other_non_builtin_integer_types) (value=1.0) ... FAIL
+  test_rejects_bool_and_other_non_builtin_integer_types (test_positive_integer.ValidatePositiveIntegerTests.test_rejects_bool_and_other_non_builtin_integer_types) (value='1') ... FAIL
+  test_rejects_bool_and_other_non_builtin_integer_types (test_positive_integer.ValidatePositiveIntegerTests.test_rejects_bool_and_other_non_builtin_integer_types) (value=None) ... FAIL
+  test_rejects_bool_and_other_non_builtin_integer_types (test_positive_integer.ValidatePositiveIntegerTests.test_rejects_bool_and_other_non_builtin_integer_types) (value=<object object at 0x100ae0850>) ... FAIL
+test_rejects_zero_and_negative_integers (test_positive_integer.ValidatePositiveIntegerTests.test_rejects_zero_and_negative_integers) ... 
+  test_rejects_zero_and_negative_integers (test_positive_integer.ValidatePositiveIntegerTests.test_rejects_zero_and_negative_integers) (value=0) ... FAIL
+  test_rejects_zero_and_negative_integers (test_positive_integer.ValidatePositiveIntegerTests.test_rejects_zero_and_negative_integers) (value=-1) ... FAIL
+  test_rejects_zero_and_negative_integers (test_positive_integer.ValidatePositiveIntegerTests.test_rejects_zero_and_negative_integers) (value=-42) ... FAIL
+
+======================================================================
+FAIL: test_accepts_positive_builtin_integers (test_positive_integer.ValidatePositiveIntegerTests.test_accepts_positive_builtin_integers)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-u62liu1c/tests/test_positive_integer.py", line 8, in test_accepts_positive_builtin_integers
+    self.assertEqual(validate_positive_integer(1), 1)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: None != 1
+
+======================================================================
+FAIL: test_rejects_bool_and_other_non_builtin_integer_types (test_positive_integer.ValidatePositiveIntegerTests.test_rejects_bool_and_other_non_builtin_integer_types) (value=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-u62liu1c/tests/test_positive_integer.py", line 20, in test_rejects_bool_and_other_non_builtin_integer_types
+    with self.assertRaises(TypeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_rejects_bool_and_other_non_builtin_integer_types (test_positive_integer.ValidatePositiveIntegerTests.test_rejects_bool_and_other_non_builtin_integer_types) (value=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-u62liu1c/tests/test_positive_integer.py", line 20, in test_rejects_bool_and_other_non_builtin_integer_types
+    with self.assertRaises(TypeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_rejects_bool_and_other_non_builtin_integer_types (test_positive_integer.ValidatePositiveIntegerTests.test_rejects_bool_and_other_non_builtin_integer_types) (value=1.0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-u62liu1c/tests/test_positive_integer.py", line 20, in test_rejects_bool_and_other_non_builtin_integer_types
+    with self.assertRaises(TypeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_rejects_bool_and_other_non_builtin_integer_types (test_positive_integer.ValidatePositiveIntegerTests.test_rejects_bool_and_other_non_builtin_integer_types) (value='1')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-u62liu1c/tests/test_positive_integer.py", line 20, in test_rejects_bool_and_other_non_builtin_integer_types
+    with self.assertRaises(TypeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_rejects_bool_and_other_non_builtin_integer_types (test_positive_integer.ValidatePositiveIntegerTests.test_rejects_bool_and_other_non_builtin_integer_types) (value=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-u62liu1c/tests/test_positive_integer.py", line 20, in test_rejects_bool_and_other_non_builtin_integer_types
+    with self.assertRaises(TypeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_rejects_bool_and_other_non_builtin_integer_types (test_positive_integer.ValidatePositiveIntegerTests.test_rejects_bool_and_other_non_builtin_integer_types) (value=<object object at 0x100ae0850>)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-u62liu1c/tests/test_positive_integer.py", line 20, in test_rejects_bool_and_other_non_builtin_integer_types
+    with self.assertRaises(TypeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_rejects_zero_and_negative_integers (test_positive_integer.ValidatePositiveIntegerTests.test_rejects_zero_and_negative_integers) (value=0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-u62liu1c/tests/test_positive_integer.py", line 14, in test_rejects_zero_and_negative_integers
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_rejects_zero_and_negative_integers (test_positive_integer.ValidatePositiveIntegerTests.test_rejects_zero_and_negative_integers) (value=-1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-u62liu1c/tests/test_positive_integer.py", line 14, in test_rejects_zero_and_negative_integers
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_rejects_zero_and_negative_integers (test_positive_integer.ValidatePositiveIntegerTests.test_rejects_zero_and_negative_integers) (value=-42)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-u62liu1c/tests/test_positive_integer.py", line 14, in test_rejects_zero_and_negative_integers
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+FAILED (failures=10)

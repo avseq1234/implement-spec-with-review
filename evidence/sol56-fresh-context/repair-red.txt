@@ -1,0 +1,25 @@
+test_missing_process_inspection_stops_before_provider_and_budget (test_runtime.RuntimeTests.test_missing_process_inspection_stops_before_provider_and_budget) ... FAIL
+
+======================================================================
+FAIL: test_missing_process_inspection_stops_before_provider_and_budget (test_runtime.RuntimeTests.test_missing_process_inspection_stops_before_provider_and_budget)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_runtime.py", line 34, in test_missing_process_inspection_stops_before_provider_and_budget
+    invoke(self.run,'1.1','review')
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/scripts/runner.py", line 171, in invoke
+    result=process(argv,work,prompt,min(s['config']['limits']['timeout_seconds'],s['config']['limits']['active_seconds']-s['metrics']['active_seconds']),s['config']['limits']['heartbeat_seconds'],started,beat,(writer_fd,))
+  File "/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/mock.py", line 1176, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/mock.py", line 1180, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/mock.py", line 1241, in _execute_mock_call
+    raise effect
+AssertionError: provider launched before environment check
+
+----------------------------------------------------------------------
+Ran 1 test in 0.326s
+
+FAILED (failures=1)

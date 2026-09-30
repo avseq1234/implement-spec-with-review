@@ -1,0 +1,15 @@
+test_missing_test_first_proof_is_disclosed_without_pausing (test_runtime.RuntimeTests.test_missing_test_first_proof_is_disclosed_without_pausing) ... FAIL
+
+======================================================================
+FAIL: test_missing_test_first_proof_is_disclosed_without_pausing (test_runtime.RuntimeTests.test_missing_test_first_proof_is_disclosed_without_pausing)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_runtime.py", line 73, in test_missing_test_first_proof_is_disclosed_without_pausing
+    self.assertEqual(t['implementation'].get('validated_tdd'),'test-after')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: None != 'test-after'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.216s
+
+FAILED (failures=1)

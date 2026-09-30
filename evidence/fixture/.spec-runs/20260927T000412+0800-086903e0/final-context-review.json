@@ -1,0 +1,7 @@
+{
+  "source": "unavailable",
+  "capacity": null,
+  "next_read_bytes": 25479,
+  "action": "resume",
+  "basis": "Measured original specification, candidate source and test files, and verification evidence bytes; no reliable context capacity available."
+}

@@ -1,0 +1,555 @@
+請幫我設計、實作、驗證並安裝一個 Codex skill，暫名 `implement-spec-with-review`。
+
+此 skill 根據 high-level design 和 OpenSpec detailed implementation spec，透過 subagents 管理外部 CLI，依序完成全部 coding tasks，包含 TDD、implementation、review、修正、反駁、fallback、整合驗證及報告。
+
+目標：在不降低品質門檻的前提下，減少重複分析、context 浪費和無效往返，縮短整體完成時間。
+
+請交付真正可執行的 skill、必要 scripts、templates、狀態管理和驗證案例，不要只提供概念或另一份計畫。
+
+**0. 最高優先規則：任何不確定事項都先詢問我**
+
+此規則適用於現在建立 skill，以及未來使用 skill 執行專案的所有階段、所有 agents 和外部 CLI。
+
+- 遇到不確定、歧義、資訊缺漏、規格衝突，或需要選擇但我尚未授權的事項，必須先詢問我。
+- 不得自行猜測、採用未確認的假設，或以「低風險」「合理預設」「業界慣例」「加快速度」為理由自行決定。
+- 可以先做唯讀查證，例如閱讀文件、檢查程式碼、查閱 CLI help 和官方文件；查證後仍不確定，就必須詢問。
+- 提問時說明不確定處、現有資訊為何不足、可選方案及影響。可以提出建議，但必須等我選擇。
+- 同時發現多個問題時集中詢問；已明確回答或本計畫已明確規定的事項，不重複詢問。
+- 等待回答時，暫停受影響的操作與 dependent tasks。只有已授權且確定不受影響的工作可以繼續。
+- Subagent 或外部 CLI 遇到不確定事項，回傳 `NEEDS_USER_INPUT`，附問題、證據、選項與影響範圍，由 orchestrator 統一詢問我。
+- 技術 finding 可以依明確規格與可重現證據查證；仍有無法確定的爭議時，必須詢問我，不能用另一個 reviewer 的主觀結論代替我的決定。
+- 我的回答記錄於 `decisions.md` 和 discussion log，並同步給相關 agents／CLI sessions。
+- 「確認後自動完成」只表示在已確認的範圍和決策內自動執行，不代表可以自行處理新的不確定事項。
+
+以下規則與本條衝突時，以本條為準。
+
+**1. 輸入與整體流程**
+
+使用者提供：
+
+- High-level design document。
+- OpenSpec 產生的 detailed implementation spec。
+- 相關 tasks、proposal、design、requirements／scenarios。
+- 可選的架構圖、流程圖、補充文件。
+- Repository 或工作目錄。
+
+Detailed spec 通常已拆成 junior engineer 可以理解的 tasks。
+
+Skill 必須保留原始 task ID，理解整體設計、dependencies 和 acceptance criteria，依序執行：
+
+Preflight → 使用者確認 → 每個 task 的 TDD／implementation／review／fix → 整體整合驗證 → 最終報告。
+
+確認後，不在每個 task 或每輪 review 結束時詢問是否繼續；只有出現不確定事項、blocker 或需要新授權時暫停。
+
+**2. 每次啟動詢問三個角色的模型與 effort**
+
+每次使用 skill 必須收集：
+
+| 角色 | 必須設定 |
+|---|---|
+| Primary implementer | 模型、effort |
+| Reviewer | 模型、effort |
+| Fallback implementer | 模型、effort |
+
+目前使用者的模型選項名稱：
+
+- Codex SOL 5.6。
+- Claude Sonnet 5。
+
+三個角色可以獨立選擇相同或不同模型。
+
+依選擇使用外部 CLI：
+
+- Codex 模型 → Codex CLI。
+- Claude 模型 → Claude CLI。
+
+要求：
+
+- 盡量一次收集全部設定。
+- 支援使用者一句話指定三個角色及 effort。
+- 本次輸入已指定的設定不重問。
+- 可顯示上次設定，但不能默默沿用。
+- 明確要求「沿用上次設定」時，可以沿用並展示配置。
+- 這些設定控制外部 CLI 模型；不要把它們混同於 Codex App 主 agent 或管理 subagent 的模型。
+
+先檢查本機 CLI 版本、help、設定和必要官方文件，再提供 effort 選項。
+
+不得虛構 model ID、effort 或 flags；不得把 App 顯示名稱直接猜成 CLI model ID。
+
+不同 provider 的 effort 不視為等效。模型不支援 effort 時，顯示「不支援／使用模型預設」；無法驗證則詢問，不能默默換模型或降級。
+
+Fallback 可以與 primary 相同模型、不同 effort。若完全相同，說明只有新 session 的重新分析，不代表能力升級，但仍允許選擇。
+
+初始確認表包含：
+
+角色、顯示名稱、provider、實際 model ID、effort、CLI、可用性。
+
+**3. Preflight 與初始確認**
+
+實作專案前：
+
+- 讀取所有輸入文件，記錄來源與版本／hash。
+- 比對 high-level design、detailed spec、tasks、scenarios 和圖表。
+- 建立 requirements → tasks → acceptance criteria → tests 對照。
+- 找出缺漏、矛盾、dependencies、過大 tasks 及不可測的驗收條件。
+- 保留原始 task ID；需要改動 task 拆分或順序且規格未明確授權時，提出方案讓我確認。
+- 檢查 AGENTS.md、專案規範、repository 狀態和既有修改。
+- 確認 build、lint、typecheck、test 指令與 baseline failures。
+- 檢查 subagent、外部 CLI、認證、非互動執行、resume、結構化輸出和權限。
+- 確認外部 CLI 可讀取文件。
+- 圖表必須以 CLI 支援的方式提供，不能只給路徑就宣稱已讀懂。
+- 圖表不清楚或無法讀取時，詢問所需資訊，不能猜測。
+
+集中提出不確定事項，再產出可確認的執行計畫：
+
+- 三個角色的模型與 effort。
+- 規格解讀、範圍及 task 順序。
+- Acceptance criteria 和品質 gates。
+- 高風險 tasks。
+- TDD 例外及驗證方式。
+- Session／review／fallback 策略。
+- Timeout、重試、時間／用量預算。
+- Baseline failures 處理。
+- Log 位置。
+- 尚未解決的問題。
+
+不得把未確認的假設當作執行依據。完成釐清且我確認後，才開始專案實作。
+
+**4. 主 agent 與每個 task 的 subagents**
+
+Codex App 主 agent 作為 orchestrator，負責：
+
+- 整體規劃、派工、dependencies。
+- Gate 判斷和進度追蹤。
+- 問題釐清與決策同步。
+- 讀取精簡結構化結果，必要時查證詳細 log。
+- 最終報告。
+
+每個 task 啟動一個 Execution subagent 和一個 Review subagent。
+
+Execution subagent：
+
+- 管理該 task 的初次實作、所有修正及 fallback。
+- 透過 runner 呼叫外部 implementer CLI。
+- 同一 task 各輪繼續使用同一 Execution subagent。
+- 切換 fallback CLI／session 不需要連帶更換 subagent。
+- Task 完成或停止後保存 checkpoint 並結束。
+
+Review subagent：
+
+- 管理該 task 的 reviewer CLI、rounds、findings 與驗證。
+- 根據規則 resume 或建立 fresh reviewer session。
+- 管理 subagent 可以延續，但不能將先前結論提前傳給需要獨立判斷的 fresh reviewer。
+
+下一個 task 建立新的一對 subagents，提供：
+
+- 整體設計與約束。
+- 當前 task 規格和驗收條件。
+- 已完成 dependencies 的契約與必要摘要。
+- 相關原始文件、程式碼及證據位置。
+
+Subagent 自身 context 不足時，可以從 checkpoint 換新 subagent，不重置 task／review 預算。
+
+Subagents 管理 CLI，不重複代替 CLI 做完整實作或完整 review。
+
+同時只能有一個 implementer 修改交付程式碼。Reviewer 不得修改交付程式碼；需要寫入來重現問題時，使用隔離環境。
+
+若環境不支援 subagent，詢問是否改由主 agent 直接管理 CLI，不能默默替代或假裝已啟動。
+
+**5. Implementer session 策略**
+
+每個 task 使用獨立 implementer session。
+
+同一 task 優先以明確 session ID resume，保留設計理由、修正背景與失敗嘗試。
+
+以下情況建立新 session：
+
+- 開始下一個 task。
+- 切換 fallback。
+- Context 空間不足。
+- Session 失效或不能可靠恢復。
+
+依已確認規則執行的 session 更換不必重問，但不能改變未授權的模型／effort。
+
+Session registry 綁定：
+
+run ID、task ID、role、provider、model、effort、session ID、repository/worktree。
+
+禁止使用「最近一次 session」捷徑，禁止同一 session 並行 resume。
+
+第一版使用非互動 CLI＋session resume，不建立脆弱的互動 terminal 自動化來維持程序常駐。
+
+**6. Reviewer session 策略**
+
+- Round 1：新 session，完整審查。
+- Round 2：優先 resume，驗證修正、反駁與 task 全貌。
+- 若進入 Round 3：必須使用全新 reviewer session。
+- Round 4–5：依 context 和修正情況 resume，必要時新建 session。
+
+一般低風險 task 達標立即停止，不為換 session 固定多跑幾輪。
+
+Fresh reviewer 分兩階段：
+
+1. 讀規格、驗收條件、最新程式碼、task 累積變更與相關介面，先保存自己獨立形成的 findings。
+2. 再讀舊 finding ledger、反駁與裁決，去重並完成報告。
+
+不得先用「之前已通過」「只剩這些問題」引導 fresh reviewer。
+
+Fresh session 仍使用選定的 Reviewer 模型與 effort。
+
+高風險 task 在 preflight 提出並由我確認，例如權限、安全邊界、資料遷移、併發及跨服務契約。
+
+高風險 task 通過前：
+
+- 必須有一次額外 fresh reviewer 對最終候選版本獨立審查。
+- 該審查計入五輪上限，預留輪次。
+- Round 3 的獨立審查若符合條件，可滿足此要求。
+- 審查後若又修改程式碼，重新驗證受影響部分。
+- 預算不足時 blocked，不能省略必要驗證。
+
+**7. Context 管理與 checkpoint**
+
+主 agent、subagents、implementer CLI 和 reviewer CLI 的 context 分別管理。
+
+Subagent 回傳摘要只減少主 agent 的負擔，不能解決外部 CLI 自身的 context 壓力。
+
+每輪前：
+
+- 優先取得當前 context 用量／剩餘容量。
+- 不把累計 billed tokens 當成目前 context 佔用。
+- 取不到可靠數據時明確標示未知，依 preflight 已確認的替代策略處理。
+- 評估下一輪讀檔、工具輸出和回答空間。
+- 不以固定輪數判斷 context 是否足夠。
+
+每輪及 session 切換前保存 checkpoint：
+
+- 文件索引和版本。
+- 設計約束、acceptance criteria、已確認決策。
+- Task、程式碼快照、已完成內容。
+- 未解 findings。
+- 反駁、裁決和證據。
+- 失敗嘗試。
+- 測試及環境狀態。
+- 下一步、必須重讀的檔案。
+
+偵測到 compaction 後，重新載入關鍵約束、決策、驗收條件和未解 findings，並重讀相關原始檔案。
+
+摘要不取代原始規格或程式碼。原始文件持續可讀，不每輪重貼全文，也不能只准讀摘要。
+
+換 session 或 compaction 不重置 review 輪數。
+
+**8. TDD 與 implementation**
+
+參考並核對：
+
+https://github.com/obra/superpowers/blob/main/skills/test-driven-development/SKILL.md
+
+記錄採用版本／commit。與本計畫衝突或無法確定如何適用時詢問我。
+
+行為變更依序：
+
+1. 從 acceptance criteria 定義可觀察行為。
+2. 先寫測試。
+3. 實際確認因預期缺少的行為而失敗。
+4. 寫最小可行實作。
+5. 確認測試通過。
+6. 必要時 refactor，維持測試通過。
+
+保存 RED／GREEN 指令、exit code、結果和版本。
+
+禁止：
+
+- 以語法或環境錯誤冒充有效 RED。
+- 弱化 assertion、刪除必要測試或不合理 skip。
+- 事後補測試卻宣稱 test-first。
+- 為符合 TDD 刪除使用者原有程式碼。
+
+Bug fix 優先加入 regression test。
+
+文件、設定、generated code 等例外及驗證方式須先確認，不自行豁免。
+
+交付 gate 依採用規範執行專案測試套件，不悄悄以單一測試檔替代。
+
+**9. Review 品質要求**
+
+Reviewer 應盡量一次找出全部有證據的問題，不找到第一個就停止。
+
+檢查範圍：
+
+- High-level design、detailed spec、acceptance criteria。
+- 正常、邊界、錯誤路徑。
+- 測試是否驗證真實需求。
+- Callers、dependencies、interfaces。
+- Task 累積變更和已完成 tasks 的互動。
+- 相關安全、資料完整性、併發、效能、相容性。
+- 範圍外修改、TODO、stub、workaround。
+
+不設定 finding 數量配額，不用風格偏好湊問題。
+
+每個 finding 包含：
+
+- 穩定 ID。
+- Severity、是否 blocking。
+- 檔案位置。
+- 違反的需求或預期行為。
+- 觸發條件及影響。
+- 證據、重現方式。
+- 修正／驗證方向。
+
+未證實的疑慮標示待釐清，不得當成已證實缺陷，也不能默默略過。查證後仍不確定，回傳 NEEDS_USER_INPUT。
+
+列出審查覆蓋範圍、未驗證部分及原因。
+
+後續 review 可以優先讀 delta，但審查範圍不能只限 delta 或已知 findings。
+
+**10. 反駁與 finding ledger**
+
+Implementer 逐項回覆：
+
+- ACCEPT：同意並修正。
+- REBUT：提供規格、程式碼或測試證據反駁。
+- NEEDS_USER_INPUT：需要使用者釐清。
+
+不能盲從 reviewer，也不能無證據拒絕。
+
+Finding 狀態至少包含：
+
+OPEN、ACCEPTED、FIXED_PENDING_VERIFICATION、VERIFIED_FIXED、REBUTTED_PENDING_ADJUDICATION、DISMISSED_WITH_EVIDENCE、BLOCKED。
+
+Implementer 不能自行宣告 VERIFIED_FIXED，也不能單方面關閉被反駁的問題。
+
+Reviewer 根據證據重新判斷。若證據仍不足或雙方存在無法確定的爭議，直接交由 orchestrator 詢問我。
+
+本版不要求第四個 Fallback reviewer，不讓另一個 reviewer 的主觀判斷取代使用者釐清。
+
+不因 reviewer session 更換就洗掉有效 findings。
+
+**11. 五輪 review 上限與 fallback**
+
+每個 task 最多五輪有效 review：
+
+- Round 1：審查初次 implementation。
+- Round 2：審查 primary 第一次修正／反駁後結果。
+- Round 2 結束仍有 blocking findings 或 gate 未過：下一次修正切換 Fallback implementer。
+- Round 3：fresh reviewer 審查 fallback 結果。
+- Round 4–5：必要修正與驗證。
+
+Round 2 新發現的 blocking findings 也觸發 fallback。
+
+需求不明、環境問題或權限限制不能靠換 implementer 取代釐清。
+
+第五輪必須驗證最新程式碼。未過即 BLOCKED，不得第五輪後再修一次卻沿用舊結果。
+
+達標立即停止，不要求跑滿。
+
+有效 round 是對明確程式碼快照完成規定審查並產生完整報告。未完成審查、CLI timeout、認證或格式錯誤，不算有效 round，但受有限 infrastructure retry 和總預算限制。
+
+等待使用者回答不額外消耗 round；已完成的 round 不因回答或 session 切換而重置。
+
+五輪用盡後保存結果並詢問下一步，不自行提高上限。
+
+**12. Task 與整體完成 gates**
+
+Task 完成要求：
+
+- Acceptance criteria 有實作及證據。
+- 必要測試、build、lint、typecheck 滿足約定 gates。
+- 無未解 blocking findings 或影響完成判定的待釐清問題。
+- 所有修正已審查。
+- Review 與測試對應同一最新程式碼快照。
+- 無未揭露的 stub、跳過驗證或 scope deviation。
+- 高風險 task 已完成所需獨立審查。
+
+快照涵蓋相關 tracked、untracked 和未提交檔案，不只使用 HEAD SHA。
+
+程式碼變更後，相關舊驗證失效並重新評估。
+
+Baseline failures 具名揭露，例外必須先確認。
+
+所有 tasks 通過後：
+
+- 執行必要完整測試、integration／end-to-end 驗證。
+- 使用所選 Reviewer 的新 session，審查 high-level design 落地與跨 task 契約。
+- Final gate 有獨立的五輪上限，同樣第二輪未收斂就切 fallback。
+- 新問題修正後重新驗證受影響範圍。
+- 不新增修復 task 來無限重置預算。
+
+Task gates 和 final gate 全過，才能宣告整體完成。
+
+**13. Discussion log 儲存位置**
+
+所有執行紀錄保存在目標專案根目錄：
+
+`.spec-runs/<run-id>/`
+
+Run ID 使用時間戳加短隨機 ID，記錄時區，支援明確指定既有 run ID 恢復。
+
+包含：
+
+| 路徑 | 用途 |
+|---|---|
+| `discussion.md` | 按 task／round 排列的討論總覽 |
+| `summary.md` | 最終或中斷時的成果報告 |
+| `decisions.md` | 使用者問題、回答、決策與適用範圍 |
+| `config.json` | 模型、effort、預算與確認設定 |
+| `manifest.json` | 文件版本、task mapping |
+| `state.json` | 執行狀態 |
+| `sessions.json` | Session registry |
+| `events.jsonl` | Append-only events |
+| `tasks/<task-id>/checkpoint.json` | 恢復資料 |
+| `tasks/<task-id>/findings.json` | Finding ledger |
+| `tasks/<task-id>/round-01/` | Review、回覆、測試與證據 |
+| `final-review/` | 整體審查與整合結果 |
+
+Task ID 不適合作路徑時，使用安全名稱並保存原始 ID 對照。
+
+Runner 是 canonical logs 和狀態的唯一寫入者。Agents／CLI 回傳結果或寫入隔離輸出檔，由 runner 驗證並整合。
+
+每輪即時保存，不等全部完成才整理。
+
+`discussion.md` 包含：
+
+- Task、round、角色、模型、effort。
+- Reviewer findings。
+- Implementer 接受／反駁與證據。
+- 修正摘要。
+- 驗證及處置。
+- 使用者釐清與決策連結。
+- Fallback、fresh session、compaction 原因。
+- 程式碼快照和詳細證據連結。
+
+記錄可觀察訊息、決策和證據，不要求隱藏思考過程，不寫入 secrets。
+
+Logs 預設不提交 Git：
+
+- 使用 repository 的本機 exclude。
+- 不無故修改團隊共用 `.gitignore`。
+- 隔離 worktree 仍使用固定 run 目錄，避免清理後遺失。
+- Runtime logs 不納入程式碼快照，避免更新 log 使驗證持續失效。
+
+完成或停止時提供 discussion.md、summary.md、decisions.md 和 run 目錄的確切路徑。
+
+**14. 執行狀態與恢復**
+
+至少支援：
+
+PENDING、READY、IMPLEMENTING、REVIEWING、FIXING、WAITING_FOR_USER、VERIFIED、BLOCKED、FAILED、CANCELLED。
+
+Runner 必須具備：
+
+- 原子狀態更新與 append-only events。
+- 唯一 invocation ID。
+- 有限 timeout、重試、取消及 heartbeat。
+- Exit code、輸出格式及完整性驗證。
+- 非零 exit、截斷、缺少報告不假通過。
+- 舊程序停止後才交出寫入權。
+- 恢復時比對 state、程序存活和檔案快照。
+- 不盲目重跑可能已完成的寫入。
+- 安全 argv／stdin，避免文件內容形成 shell 注入。
+- 保護使用者原有修改，必要時使用經確認的隔離 worktree。
+- 不使用繞過權限的 flags 達成自動化。
+
+WAITING_FOR_USER 時保存問題、影響範圍與 checkpoint，回答後從正確位置繼續。
+
+Blocked task 的 dependent tasks 不執行。只有初始計畫已允許且確定獨立的 tasks 可以繼續。
+
+預設完成範圍是本機實作、測試、checkpoint 和報告；不隱含 push、merge、deploy 授權。
+
+**15. 速度最佳化與量測**
+
+使用：
+
+- 文件解析與 manifest 快取，以 hash 偵測變更。
+- 同一 task 的 implementer session 延續。
+- 有計畫的 fresh reviewer。
+- 主 agent 精簡摘要。
+- 不互相干擾的唯讀檢查或隔離測試平行化。
+- 開發中先跑相關測試，交付仍遵守完整 gates。
+- 同一不可變快照上的 review 和測試可平行。
+- 重用仍有效的驗證。
+- 達標即停。
+
+不得為速度省略審查、降低測試門檻或跳過使用者釐清。
+
+不承諾 resume 必然更快；比較達到相同品質門檻的總耗時。
+
+記錄可取得的：
+
+- CLI 呼叫、implementation、review、tests 耗時。
+- 可觀察的啟動、讀檔、compaction 耗時。
+- Session 更換原因。
+- 重試、fallback 次數。
+- Token／費用。
+- 使用者等待時間，與實際執行時間分開呈現。
+- Task 和整體 wall-clock time。
+
+取不到的數據標示 unavailable，不虛構。
+
+**16. 最終報告**
+
+包含：
+
+- 原始 tasks 及最終狀態。
+- 實作內容與主要變更。
+- Requirements／acceptance criteria 覆蓋。
+- TDD、測試和整合結果。
+- Review rounds、findings 處置。
+- 重要反駁與使用者決策。
+- Fallback、fresh session、context 管理。
+- Baseline failures、限制、未完成事項。
+- 耗時和可取得用量。
+- 成果、discussion log 和證據位置。
+
+不得將 blocked、未測試、未審查或尚待使用者回答的內容包裝成完成。
+
+**17. Skill 交付與驗收**
+
+使用精簡 SKILL.md 作入口；確定性控制流程放 scripts；詳細 prompts、schemas、規則放 templates／references。
+
+避免建立不必要的大型 agent framework。對未確定的實作選擇先提出方案讓我確認。
+
+先用 fake CLI adapters 驗證控制流程，再用隔離的小型 fixture repository 做真實 CLI smoke test。
+
+至少驗證：
+
+- 三個角色模型／effort 獨立設定。
+- Provider 正確對應 CLI。
+- 不支援設定不默默降級。
+- 本次已指定項目不重問。
+- 每個 task 的 subagent 生命週期正確。
+- 同一 task resume、fallback、新 session 正確。
+- Round 3 使用 fresh reviewer。
+- 高風險獨立審查計入五輪。
+- 五輪用盡正確停止。
+- Context 更換不重置輪數。
+- Session 不跨 task／role 混用。
+- 修正與反駁流程正確。
+- 不確定事項回傳 NEEDS_USER_INPUT。
+- 等待回答時不執行受影響操作。
+- 決策保存並同步到相關 agents。
+- 回答後可恢復，且不遺失輪數。
+- 檔案變更使舊驗證失效。
+- Untracked files 不漏審。
+- Timeout、格式錯誤不假通過。
+- 恢復不造成重複寫入或多個 implementer 並行修改。
+- Logs 每輪保存且證據可追查。
+- Runtime logs 不影響程式碼快照。
+- Task 全過但 final gate 未過，整體仍未完成。
+- OpenSpec 原始 task ID 和完成狀態可對照。
+
+真實 CLI 不可用時，清楚區分模擬驗證與尚未完成的真實驗證，不宣稱完整可用。
+
+**18. 現在請執行的工作**
+
+先檢查環境、適用 skill 規範、subagent 和 CLI 能力。
+
+提出精簡實作設計，集中詢問所有不確定事項。必要問題回答且我確認後，完成 skill 的實作、驗證與安裝，提供最小使用範例和真實驗證結果。
+
+請區分：
+
+- 現在建立與測試 skill 的選項及確認。
+- 未來每次使用 skill 執行專案時的角色選擇與 preflight。
+
+目前未提供實際專案 spec，不應阻止建立 skill；請提出隔離 fixture repository 的驗證方案供我確認。
+
+不要只返回另一份尚未落實的計畫，也不要在有不確定事項時自行決定。

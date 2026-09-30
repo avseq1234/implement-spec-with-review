@@ -1,0 +1,44 @@
+{
+  "roles": {
+    "primary": {
+      "display_name": "Codex GPT-5.6-Sol",
+      "provider": "codex",
+      "cli": "/Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex",
+      "model": "gpt-5.6-sol",
+      "effort": "medium",
+      "verified_efforts": ["low", "medium", "high", "xhigh", "max", "ultra"],
+      "capability_evidence": "codex-cli 0.158.0-alpha.2.1 help, ChatGPT login status, and local models_cache.json refreshed 2026-09-28"
+    },
+    "reviewer": {
+      "display_name": "Codex GPT-5.6-Sol",
+      "provider": "codex",
+      "cli": "/Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex",
+      "model": "gpt-5.6-sol",
+      "effort": "high",
+      "verified_efforts": ["low", "medium", "high", "xhigh", "max", "ultra"],
+      "capability_evidence": "codex-cli 0.158.0-alpha.2.1 help, ChatGPT login status, and local models_cache.json refreshed 2026-09-28"
+    },
+    "fallback": {
+      "display_name": "Codex GPT-5.6-Sol",
+      "provider": "codex",
+      "cli": "/Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex",
+      "model": "gpt-5.6-sol",
+      "effort": "xhigh",
+      "verified_efforts": ["low", "medium", "high", "xhigh", "max", "ultra"],
+      "capability_evidence": "codex-cli 0.158.0-alpha.2.1 help, ChatGPT login status, and local models_cache.json refreshed 2026-09-28"
+    }
+  },
+  "limits": {
+    "timeout_seconds": 600,
+    "retry_limit": 1,
+    "max_calls": 30,
+    "active_seconds": 5400,
+    "heartbeat_seconds": 5
+  },
+  "context_policy": "checkpoint-resume",
+  "context_policy_confirmed": true,
+  "baseline_exceptions": [],
+  "tdd_exceptions": [],
+  "allow_independent_after_block": false,
+  "platform": "posix"
+}

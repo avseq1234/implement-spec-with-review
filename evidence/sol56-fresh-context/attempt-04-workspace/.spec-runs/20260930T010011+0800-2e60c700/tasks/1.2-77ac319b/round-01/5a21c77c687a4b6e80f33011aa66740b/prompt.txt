@@ -1,0 +1,306 @@
+You are the selected external reviewer CLI, managed by a Review subagent. Work in the isolated candidate copy; never modify delivery source, specs, tests or canonical logs. The candidate snapshot ID in the packet identifies the original repository's code, not the copy's git HEAD. Do not commit. Any writable reproduction requires a separate isolated scratch directory and must not alter this candidate. If sandbox prevents a necessary reproduction, report it as unverified or NEEDS_USER_INPUT; do not bypass permissions.
+
+Read the original document copies, acceptance criteria, candidate source, relevant callers/interfaces, dependencies, and cumulative task changes. Review normal, boundary/error paths, real requirements coverage, integration with previous tasks, relevant security/data integrity/concurrency/performance/compatibility, out-of-scope changes, TODO/stub/workarounds. Find all evidence-supported defects, not just the first; no quotas or stylistic filler. A later review still covers task whole, not only known findings or delta.
+
+If phase=independent: form your OWN findings first. Do NOT look for previous review logs, conclusions or ledgers. Return and let runner durably save your complete independent report. In phase=reconcile, reread your saved independent findings, then compare the supplied previous ledger, rebuttals and decisions. Deduplicate with stable IDs. Do not erase an independent issue without explicit evidence-based disposition. Reappearing defects are OPEN even if previously fixed. Do not silently change a blocking finding into a non-blocking one.
+
+Each finding: stable ID, P0/P1/P2/P3, blocking boolean, file/line, violated requirement, trigger, impact, concrete evidence/reproduction and fix/verification direction. Unproven suspicions are not confirmed findings. Investigate read-only; unresolved ambiguity returns NEEDS_USER_INPUT (questions, evidence, options+impacts, affected task IDs). A reviewer opinion cannot replace a user decision. For known fixes use VERIFIED_FIXED only after verifying evidence; rebuttals can be DISMISSED_WITH_EVIDENCE or reopened. Never close without evidence.
+
+Report coverage by acceptance ID, unverified items and reasons, and all scope_checked categories: requirements, normal, boundary, error, tests, callers, interfaces, cumulative_changes, security, data_integrity, concurrency, performance, compatibility, scope. Return schema-complete JSON with REVIEW_COMPLETE and the EXACT input snapshot. Unneeded fields use empty arrays, tdd=not-applicable. Do not infer the task passed from prior review status. Runner determines rounds and gates.
+
+The acceptance and coverage arrays contain EXACT acceptance ID strings from the packet, e.g. ["AC1"], never IDs with prose suffixes. Put explanatory coverage details in summary. verification_evidence contains actual runner/capture receipts and output files; review those for TDD timing. The general policy allowing test-after is NOT evidence that this task used test-after. Do not mark already-provided TDD evidence unverified merely because the isolation copy has no commit history.
+
+
+INPUT PACKET
+{
+  "task": {
+    "acceptance": [
+      "AC2"
+    ],
+    "dependencies": [
+      "1.1"
+    ],
+    "gates": [
+      {
+        "argv": [
+          "/Library/Developer/CommandLineTools/usr/bin/python3",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "id": "suite"
+      }
+    ],
+    "high_risk": false,
+    "id": "1.2",
+    "requirements": [
+      "R2"
+    ],
+    "scenarios": [
+      "only a built-in list is accepted",
+      "returns a new list in input order and preserves input",
+      "empty list returns a new empty list",
+      "each element uses the exact R1 contract",
+      "first invalid element propagates TypeError or ValueError with no partial result",
+      "empty, valid, invalid element, input type, and preservation paths are tested"
+    ]
+  },
+  "documents": [
+    {
+      "path": "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/.spec-runs/20260930T010011+0800-2e60c700/tasks/1.2-77ac319b/review-workspaces/5a21c77c687a4b6e80f33011aa66740b/_spec_inputs/0-high-level.md",
+      "kind": "high-level",
+      "sha256": "e1051dc7fac6580e98d228d292d0f97720a1d8f958237056360a86a3b6a65f95"
+    },
+    {
+      "path": "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/.spec-runs/20260930T010011+0800-2e60c700/tasks/1.2-77ac319b/review-workspaces/5a21c77c687a4b6e80f33011aa66740b/_spec_inputs/1-proposal.md",
+      "kind": "proposal",
+      "sha256": "35eb885d5fa911991ac1358ebbffe35cb92d49ad72e422cb5138fd29f24910cc"
+    },
+    {
+      "path": "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/.spec-runs/20260930T010011+0800-2e60c700/tasks/1.2-77ac319b/review-workspaces/5a21c77c687a4b6e80f33011aa66740b/_spec_inputs/2-design.md",
+      "kind": "design",
+      "sha256": "9efc467699fbe220878fcc6f1a67f26d2810ad55de9e1c16604492ab56f913fa"
+    },
+    {
+      "path": "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/.spec-runs/20260930T010011+0800-2e60c700/tasks/1.2-77ac319b/review-workspaces/5a21c77c687a4b6e80f33011aa66740b/_spec_inputs/3-tasks.md",
+      "kind": "tasks",
+      "sha256": "8a4c5a520252913392c423b5601677cdcc4b705a5cf0a8cf6937f7989208039e"
+    },
+    {
+      "path": "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/.spec-runs/20260930T010011+0800-2e60c700/tasks/1.2-77ac319b/review-workspaces/5a21c77c687a4b6e80f33011aa66740b/_spec_inputs/4-spec.md",
+      "kind": "spec",
+      "sha256": "dcf3f5f6738e50258401f28094561b6e3e59fbdc655e6f8b6b9fdae3319b7edf"
+    }
+  ],
+  "constraints": [
+    "pure side-effect-free Python validation library",
+    "no third-party dependencies",
+    "preserve caller input",
+    "no network, logging, persistence, CLI application, or scope expansion",
+    "preserve existing code and truthfully disclose any test-after work"
+  ],
+  "snapshot": "2fdbed3d98270ab127413a458e7b9bbd2af4df48cb3c7a093c74ed07554cf4f9",
+  "verification_evidence": [
+    {
+      "after_snapshot": "96d06ef65ed142ba17dd1655fbad42d86415aa655caa6398cd88634db68e4d69",
+      "approved_baseline": false,
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "duration_seconds": 0.06647610664367676,
+      "exit_code": 0,
+      "expected_failure": "",
+      "finished_at": 1790701226.486793,
+      "gate": "suite",
+      "id": "1af07bd87b5b4f069a1c86c3064b1b46",
+      "invocation": null,
+      "output_sha256": "d96ae483709b8a2dce3bf1ab67b3fc0a045a0b0227ef758213664af320a65ea5",
+      "phase": "baseline",
+      "red_expected": false,
+      "snapshot": "96d06ef65ed142ba17dd1655fbad42d86415aa655caa6398cd88634db68e4d69",
+      "started_at": 1790701226.420317,
+      "timeout": false,
+      "evidence_file": "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/.spec-runs/20260930T010011+0800-2e60c700/tasks/1.2-77ac319b/review-workspaces/5a21c77c687a4b6e80f33011aa66740b/_spec_inputs/evidence-1af07bd87b5b4f069a1c86c3064b1b46.txt"
+    },
+    {
+      "after_snapshot": "2fdbed3d98270ab127413a458e7b9bbd2af4df48cb3c7a093c74ed07554cf4f9",
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "duration_seconds": 0.06567907333374023,
+      "exit_code": 0,
+      "expected_failure": "",
+      "finished_at": 1790701929.329109,
+      "gate": "suite",
+      "id": "03936ecaec0445519f5b4fdcc21df63f",
+      "invocation": "8d31d005509740d99cf0e949af544ff9",
+      "output_sha256": "8287fabce9381986bf89985d63bce9a8d1efd682d5dbf718a920ce5ad4c944d7",
+      "phase": "green",
+      "red_expected": false,
+      "snapshot": "2fdbed3d98270ab127413a458e7b9bbd2af4df48cb3c7a093c74ed07554cf4f9",
+      "started_at": 1790701929.2634299,
+      "timeout": false,
+      "evidence_file": "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/.spec-runs/20260930T010011+0800-2e60c700/tasks/1.2-77ac319b/review-workspaces/5a21c77c687a4b6e80f33011aa66740b/_spec_inputs/evidence-03936ecaec0445519f5b4fdcc21df63f.txt"
+    },
+    {
+      "after_snapshot": "db73231fdff0064a735b300441767730524eb044fd6b1b80768bc19c197993f5",
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "duration_seconds": 0.06382274627685547,
+      "exit_code": 1,
+      "expected_failure": "AssertionError: None != []",
+      "finished_at": 1790701912.416041,
+      "gate": "suite",
+      "id": "7c9cbc78bcc543e8bcd9206881d0be99",
+      "invocation": "8d31d005509740d99cf0e949af544ff9",
+      "output_sha256": "4bac9cbe671613b4c4a4dfe9b0df35e8d593591402c61da9646771fdbbbdf3f7",
+      "phase": "red",
+      "red_expected": true,
+      "snapshot": "db73231fdff0064a735b300441767730524eb044fd6b1b80768bc19c197993f5",
+      "started_at": 1790701912.3522182,
+      "timeout": false,
+      "evidence_file": "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/.spec-runs/20260930T010011+0800-2e60c700/tasks/1.2-77ac319b/review-workspaces/5a21c77c687a4b6e80f33011aa66740b/_spec_inputs/evidence-7c9cbc78bcc543e8bcd9206881d0be99.txt"
+    },
+    {
+      "after_snapshot": "2fdbed3d98270ab127413a458e7b9bbd2af4df48cb3c7a093c74ed07554cf4f9",
+      "approved_baseline": false,
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "duration_seconds": 0.06698012351989746,
+      "exit_code": 0,
+      "expected_failure": "",
+      "finished_at": 1790701976.334201,
+      "gate": "suite",
+      "id": "1a3540a1bf7d4360aeb1b1673f4b681e",
+      "invocation": null,
+      "output_sha256": "8287fabce9381986bf89985d63bce9a8d1efd682d5dbf718a920ce5ad4c944d7",
+      "phase": "gate",
+      "red_expected": false,
+      "snapshot": "2fdbed3d98270ab127413a458e7b9bbd2af4df48cb3c7a093c74ed07554cf4f9",
+      "started_at": 1790701976.267221,
+      "timeout": false,
+      "evidence_file": "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/.spec-runs/20260930T010011+0800-2e60c700/tasks/1.2-77ac319b/review-workspaces/5a21c77c687a4b6e80f33011aa66740b/_spec_inputs/evidence-1a3540a1bf7d4360aeb1b1673f4b681e.txt"
+    }
+  ],
+  "tdd_note": "Policy permits disclosed test-after; actual receipts below determine whether THIS implementation was test-first.",
+  "phase": "independent",
+  "decisions": [
+    {
+      "answer": "採用以上設定，完成 preflight 無新問題後執行\n\nThe confirmed scope is: orchestration SOL 5.6/high; external Codex CLI primary gpt-5.6-sol/medium, reviewer gpt-5.6-sol/high, fallback gpt-5.6-sol/xhigh; timeout 600 seconds, maximum 30 calls, active runtime 5400 seconds, infrastructure retry 1, heartbeat 5 seconds; checkpoint-resume with unknown occupancy preserved as unknown; sequential original tasks 1.1 then 1.2 and final integration; both ordinary risk; no baseline exceptions, task splitting, or reordering; full gate python3 -m unittest discover -s tests -v using the resolved interpreter; no extra lint/typecheck; fresh management pair per task and final; real Codex CLI authorization only for this synthetic fixture; no push, merge, deployment, or real project changes; preserve existing code; disclose test-after without pausing solely because code preceded tests; use TDD for new behavior.\n",
+      "at": "2026-09-29T17:00:38.291285+00:00",
+      "category": "plan",
+      "questions": [
+        "Initial plan, roles, gates, budgets, exceptions and session policy"
+      ],
+      "scope": [
+        "1.1",
+        "1.2",
+        "_final"
+      ],
+      "version": 1
+    }
+  ],
+  "required_decision_version": 1,
+  "dependency_contracts": [
+    {
+      "id": "1.1",
+      "acceptance": [
+        "AC1"
+      ],
+      "summary": "Implemented the exact built-in positive integer contract in validate_positive_integer and added normal, boundary, identity-preservation, type-error, and value-error tests. Meaningful RED was captured with the expected assertion failure (receipt 4184a49231aa407dac5850c26929d29c); the approved full suite then passed 5 tests (GREEN receipt 8730beb037be4a08bac318ac94957adc). Task 1.2 remained unchanged."
+    }
+  ],
+  "capture_command": [
+    "/opt/homebrew/opt/python@3.14/bin/python3.14",
+    "/Users/weihongda/.codex/skills/implement-spec-with-review/scripts/capture.py",
+    "--context",
+    "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/.spec-runs/20260930T010011+0800-2e60c700/tasks/1.2-77ac319b/round-01/5a21c77c687a4b6e80f33011aa66740b/capture-context.json"
+  ],
+  "cumulative_diff": "diff --git a/lib.py b/lib.py\nindex 4f4e4c7..4562b6d 100644\n--- a/lib.py\n+++ b/lib.py\n@@ -1,5 +1,11 @@\n def validate_positive_integer(value):\n-    return None\n+    if type(value) is not int:\n+        raise TypeError(\"value must be a built-in int\")\n+    if value <= 0:\n+        raise ValueError(\"value must be positive\")\n+    return value\n \n def validate_batch(values):\n-    return None\n+    if type(values) is not list:\n+        raise TypeError(\"values must be a built-in list\")\n+    return [validate_positive_integer(value) for value in values]\n",
+  "candidate_files": {
+    ".gitignore": {
+      "sha256": "862263fa1f46c20f0d1e4dac5ffcc75abd55c08211b2c3864c5f8764b9d87793",
+      "mode": 420,
+      "symlink": false,
+      "size": 19
+    },
+    "high-level.md": {
+      "sha256": "e1051dc7fac6580e98d228d292d0f97720a1d8f958237056360a86a3b6a65f95",
+      "mode": 420,
+      "symlink": false,
+      "size": 272
+    },
+    "lib.py": {
+      "sha256": "fe2ed571fc9c8ee880d3e32602231d0e1b69988d8537438b47a7d012daa83fe4",
+      "mode": 420,
+      "symlink": false,
+      "size": 398
+    },
+    "openspec/design.md": {
+      "sha256": "9efc467699fbe220878fcc6f1a67f26d2810ad55de9e1c16604492ab56f913fa",
+      "mode": 420,
+      "symlink": false,
+      "size": 187
+    },
+    "openspec/proposal.md": {
+      "sha256": "35eb885d5fa911991ac1358ebbffe35cb92d49ad72e422cb5138fd29f24910cc",
+      "mode": 420,
+      "symlink": false,
+      "size": 136
+    },
+    "openspec/spec.md": {
+      "sha256": "dcf3f5f6738e50258401f28094561b6e3e59fbdc655e6f8b6b9fdae3319b7edf",
+      "mode": 420,
+      "symlink": false,
+      "size": 709
+    },
+    "openspec/tasks.md": {
+      "sha256": "8a4c5a520252913392c423b5601677cdcc4b705a5cf0a8cf6937f7989208039e",
+      "mode": 420,
+      "symlink": false,
+      "size": 127
+    },
+    "tests/test_baseline.py": {
+      "sha256": "5fc0597a466e2fa9351ac0d824ae95c9f1ca5922f05ac24a83d201d565ec0b22",
+      "mode": 420,
+      "symlink": false,
+      "size": 218
+    },
+    "tests/test_batch.py": {
+      "sha256": "9e1bf8b842d3eb3afa888a2e74d836691815ba5f7e325af950d1e94f78a7883e",
+      "mode": 420,
+      "symlink": false,
+      "size": 1411
+    },
+    "tests/test_positive_integer.py": {
+      "sha256": "b4d201aacd82c4c69405c6f84fd193ea9b93bc873db5d8a16a5a40cae7f3fc95",
+      "mode": 420,
+      "symlink": false,
+      "size": 1016
+    }
+  },
+  "quality_gates": [
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "id": "suite"
+    }
+  ],
+  "tdd_exception": false
+}

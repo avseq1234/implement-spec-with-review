@@ -1,0 +1,105 @@
+
+test_interfaces_exist (test_baseline.Baseline) ... ok
+test_accepts_boundary_value_one (test_positive_integer.ValidatePositiveIntegerTests) ... FAIL
+test_accepts_positive_builtin_integer_and_preserves_identity (test_positive_integer.ValidatePositiveIntegerTests) ... FAIL
+test_rejects_non_builtin_integers_with_type_error (test_positive_integer.ValidatePositiveIntegerTests) ... test_rejects_zero_and_negative_integers_with_value_error (test_positive_integer.ValidatePositiveIntegerTests) ... 
+======================================================================
+FAIL: test_accepts_boundary_value_one (test_positive_integer.ValidatePositiveIntegerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/tests/test_positive_integer.py", line 15, in test_accepts_boundary_value_one
+    self.assertEqual(lib.validate_positive_integer(1), 1)
+AssertionError: None != 1
+
+======================================================================
+FAIL: test_accepts_positive_builtin_integer_and_preserves_identity (test_positive_integer.ValidatePositiveIntegerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/tests/test_positive_integer.py", line 12, in test_accepts_positive_builtin_integer_and_preserves_identity
+    self.assertIs(result, value)
+AssertionError: None is not 123456789012345678901234567890
+
+======================================================================
+FAIL: test_rejects_non_builtin_integers_with_type_error (test_positive_integer.ValidatePositiveIntegerTests) (value=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/tests/test_positive_integer.py", line 23, in test_rejects_non_builtin_integers_with_type_error
+    lib.validate_positive_integer(value)
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_rejects_non_builtin_integers_with_type_error (test_positive_integer.ValidatePositiveIntegerTests) (value=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/tests/test_positive_integer.py", line 23, in test_rejects_non_builtin_integers_with_type_error
+    lib.validate_positive_integer(value)
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_rejects_non_builtin_integers_with_type_error (test_positive_integer.ValidatePositiveIntegerTests) (value=1.0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/tests/test_positive_integer.py", line 23, in test_rejects_non_builtin_integers_with_type_error
+    lib.validate_positive_integer(value)
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_rejects_non_builtin_integers_with_type_error (test_positive_integer.ValidatePositiveIntegerTests) (value='1')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/tests/test_positive_integer.py", line 23, in test_rejects_non_builtin_integers_with_type_error
+    lib.validate_positive_integer(value)
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_rejects_non_builtin_integers_with_type_error (test_positive_integer.ValidatePositiveIntegerTests) (value=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/tests/test_positive_integer.py", line 23, in test_rejects_non_builtin_integers_with_type_error
+    lib.validate_positive_integer(value)
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_rejects_non_builtin_integers_with_type_error (test_positive_integer.ValidatePositiveIntegerTests) (value=<object object at 0x1027949a0>)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/tests/test_positive_integer.py", line 23, in test_rejects_non_builtin_integers_with_type_error
+    lib.validate_positive_integer(value)
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_rejects_non_builtin_integers_with_type_error (test_positive_integer.ValidatePositiveIntegerTests) (value=[1])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/tests/test_positive_integer.py", line 23, in test_rejects_non_builtin_integers_with_type_error
+    lib.validate_positive_integer(value)
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_rejects_zero_and_negative_integers_with_value_error (test_positive_integer.ValidatePositiveIntegerTests) (value=0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/tests/test_positive_integer.py", line 29, in test_rejects_zero_and_negative_integers_with_value_error
+    lib.validate_positive_integer(value)
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_rejects_zero_and_negative_integers_with_value_error (test_positive_integer.ValidatePositiveIntegerTests) (value=-1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/tests/test_positive_integer.py", line 29, in test_rejects_zero_and_negative_integers_with_value_error
+    lib.validate_positive_integer(value)
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_rejects_zero_and_negative_integers_with_value_error (test_positive_integer.ValidatePositiveIntegerTests) (value=-12345678901234567890)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/tests/test_positive_integer.py", line 29, in test_rejects_zero_and_negative_integers_with_value_error
+    lib.validate_positive_integer(value)
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+FAILED (failures=12)

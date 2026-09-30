@@ -1,0 +1,225 @@
+{
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "IMPLEMENTED",
+        "REVIEW_COMPLETE",
+        "NEEDS_USER_INPUT"
+      ]
+    },
+    "summary": {
+      "type": "string"
+    },
+    "snapshot": {
+      "type": "string"
+    },
+    "acceptance": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "responses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string",
+            "enum": [
+              "ACCEPT",
+              "REBUT",
+              "NEEDS_USER_INPUT"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "action",
+          "evidence"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "P0",
+              "P1",
+              "P2",
+              "P3"
+            ]
+          },
+          "blocking": {
+            "type": "boolean"
+          },
+          "file": {
+            "type": "string"
+          },
+          "line": {
+            "type": "integer"
+          },
+          "requirement": {
+            "type": "string"
+          },
+          "trigger": {
+            "type": "string"
+          },
+          "impact": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "direction": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "severity",
+          "blocking",
+          "file",
+          "line",
+          "requirement",
+          "trigger",
+          "impact",
+          "evidence",
+          "direction"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "finding_updates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "OPEN",
+              "BLOCKED",
+              "VERIFIED_FIXED",
+              "DISMISSED_WITH_EVIDENCE"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "state",
+          "evidence"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "question": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "affected": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "question",
+          "evidence",
+          "options",
+          "affected"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "coverage": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unverified": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "scope_checked": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "tdd": {
+      "type": "string",
+      "enum": [
+        "test-first",
+        "test-after",
+        "not-applicable"
+      ]
+    }
+  },
+  "required": [
+    "status",
+    "summary",
+    "snapshot",
+    "acceptance",
+    "responses",
+    "findings",
+    "finding_updates",
+    "questions",
+    "coverage",
+    "unverified",
+    "scope_checked",
+    "tdd"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,111 @@
+test_claude_provider_effort_and_id (test_adapters.AdapterTests) ... ok
+test_claude_structured_result (test_adapters.AdapterTests) ... ok
+test_codex_complete_stream (test_adapters.AdapterTests) ... ok
+test_codex_image_is_explicit_attachment (test_adapters.AdapterTests) ... ok
+test_codex_noninteractive_safe_argv (test_adapters.AdapterTests) ... ok
+test_explicit_resume_never_last (test_adapters.AdapterTests) ... ok
+test_malformed_output_rejected (test_adapters.AdapterTests) ... ok
+test_non_success_claude_rejected (test_adapters.AdapterTests) ... ok
+test_prompt_injection_not_shell (test_adapters.AdapterTests) ... ok
+test_truncated_codex_rejected (test_adapters.AdapterTests) ... ok
+test_verified_model_default_omits_effort_flag (test_adapters.AdapterTests) ... ok
+test_any_round2_gate_failure_triggers_fallback (test_engine.EngineTests) ... ok
+test_baseline_not_silent (test_engine.EngineTests) ... ok
+test_closed_regression_reopens (test_engine.EngineTests) ... ok
+test_five_round_cap_and_no_post_round5_fix (test_engine.EngineTests) ... ok
+test_high_risk_needs_second_independent_and_survives_reload (test_engine.EngineTests) ... ok
+test_implementer_cannot_close_findings (test_engine.EngineTests) ... ok
+test_independent_blocking_not_silently_downgraded (test_engine.EngineTests) ... ok
+test_manager_replacement_preserves_round (test_engine.EngineTests) ... ok
+test_original_id_and_safe_path_mapping (test_engine.EngineTests) ... ok
+test_rebuttal_needs_reviewer_disposition (test_engine.EngineTests) ... ok
+test_resume_must_return_requested_session (test_engine.EngineTests) ... ok
+test_round1_stops_when_passed (test_engine.EngineTests) ... ok
+test_round3_fresh_and_fallback (test_engine.EngineTests) ... ok
+test_session_cannot_cross_roles (test_engine.EngineTests) ... ok
+test_stale_review_refused (test_engine.EngineTests) ... ok
+test_unverified_final_prevents_overall_success (test_engine.EngineTests) ... ok
+test_wait_answer_preserves_round_and_decisions (test_engine.EngineTests) ... ok
+test_explicit_invalidation_keeps_findings_budgets_and_abandons_session (test_fresh_context_regressions.FreshContextRegressions) ... ok
+test_fixture_help_has_no_filesystem_side_effect (test_fresh_context_regressions.FreshContextRegressions) ... ok
+test_implementation_updates_overall_status (test_fresh_context_regressions.FreshContextRegressions) ... ok
+test_pending_independent_blocks_cli_review_and_fix_plans (test_fresh_context_regressions.FreshContextRegressions) ... ok
+test_review_rejects_unaccounted_source_drift (test_fresh_context_regressions.FreshContextRegressions) ... ok
+test_saved_independent_cannot_be_overwritten (test_fresh_context_regressions.FreshContextRegressions) ... ok
+test_effort_no_silent_downgrade (test_primitives.PrimitiveTests) ... ok
+test_explicit_reuse (test_primitives.PrimitiveTests) ... ok
+test_missing_review_scope_rejected (test_primitives.PrimitiveTests) ... ok
+test_no_implicit_reuse (test_primitives.PrimitiveTests) ... ok
+test_partial_role_settings_preserved (test_primitives.PrimitiveTests) ... ok
+test_provider_mismatch_is_rejected (test_primitives.PrimitiveTests) ... ok
+test_required_budget (test_primitives.PrimitiveTests) ... ok
+test_roles_are_independent (test_primitives.PrimitiveTests) ... ok
+test_snapshot_captures_modes_and_symlinks (test_primitives.PrimitiveTests) ... ok
+test_snapshots_include_untracked_and_dirty_but_exclude_runtime (test_primitives.PrimitiveTests) ... ok
+test_supplied_roles_not_asked_again (test_primitives.PrimitiveTests) ... ok
+test_uncertainty_needs_evidence_and_options (test_primitives.PrimitiveTests) ... ok
+test_unproven_finding_not_confirmed (test_primitives.PrimitiveTests) ... ok
+test_valid_review (test_primitives.PrimitiveTests) ... ok
+test_accepts_only_usable_identity (test_primitives.ProcessInspectionTests) ... ok
+test_rejects_nonzero_or_empty_identity (test_primitives.ProcessInspectionTests) ... ok
+test_any_round2_gate_failure_triggers_fallback (test_recovery_regressions.RecoveryTests) ... ok
+test_baseline_not_silent (test_recovery_regressions.RecoveryTests) ... ok
+test_capture_timeout_stops_descendant_writes (test_recovery_regressions.RecoveryTests) ... ok
+test_closed_regression_reopens (test_recovery_regressions.RecoveryTests) ... ok
+test_five_round_cap_and_no_post_round5_fix (test_recovery_regressions.RecoveryTests) ... ok
+test_high_risk_needs_second_independent_and_survives_reload (test_recovery_regressions.RecoveryTests) ... ok
+test_implementer_cannot_close_findings (test_recovery_regressions.RecoveryTests) ... ok
+test_independent_blocking_not_silently_downgraded (test_recovery_regressions.RecoveryTests) ... ok
+test_isolation_preserves_tracked_ignored_and_deletion (test_recovery_regressions.RecoveryTests) ... ok
+test_manager_replacement_preserves_round (test_recovery_regressions.RecoveryTests) ... ok
+test_original_id_and_safe_path_mapping (test_recovery_regressions.RecoveryTests) ... ok
+test_rebuttal_needs_reviewer_disposition (test_recovery_regressions.RecoveryTests) ... ok
+test_recover_checks_sidecar_before_handing_off (test_recovery_regressions.RecoveryTests) ... ok
+test_resume_must_return_requested_session (test_recovery_regressions.RecoveryTests) ... ok
+test_round1_stops_when_passed (test_recovery_regressions.RecoveryTests) ... ok
+test_round3_fresh_and_fallback (test_recovery_regressions.RecoveryTests) ... ok
+test_session_cannot_cross_roles (test_recovery_regressions.RecoveryTests) ... ok
+test_stale_review_refused (test_recovery_regressions.RecoveryTests) ... ok
+test_unverified_final_prevents_overall_success (test_recovery_regressions.RecoveryTests) ... ok
+test_wait_answer_preserves_round_and_decisions (test_recovery_regressions.RecoveryTests) ... ok
+test_any_round2_gate_failure_triggers_fallback (test_runtime.RuntimeTests) ... ok
+test_baseline_not_silent (test_runtime.RuntimeTests) ... ok
+test_closed_regression_reopens (test_runtime.RuntimeTests) ... ok
+test_external_edit_invalidates_verified (test_runtime.RuntimeTests) ... ok
+test_fake_fresh_then_reconcile_complete (test_runtime.RuntimeTests) ... ok
+test_fake_malformed_does_not_consume_round (test_runtime.RuntimeTests) ... ok
+test_fake_nonzero_does_not_pass (test_runtime.RuntimeTests) ... ok
+test_fake_question_blocks_then_answer_resumes (test_runtime.RuntimeTests) ... ok
+test_five_round_cap_and_no_post_round5_fix (test_runtime.RuntimeTests) ... ok
+test_gates_have_actual_evidence (test_runtime.RuntimeTests) ... ok
+test_high_risk_needs_second_independent_and_survives_reload (test_runtime.RuntimeTests) ... ok
+test_implementer_cannot_close_findings (test_runtime.RuntimeTests) ... ok
+test_independent_blocking_not_silently_downgraded (test_runtime.RuntimeTests) ... ok
+test_log_changes_do_not_invalidate (test_runtime.RuntimeTests) ... ok
+test_manager_replacement_preserves_round (test_runtime.RuntimeTests) ... ok
+test_missing_process_inspection_stops_before_provider_and_budget (test_runtime.RuntimeTests) ... ok
+test_missing_test_first_proof_is_disclosed_without_pausing (test_runtime.RuntimeTests) ... ok
+test_one_writer_across_runs (test_runtime.RuntimeTests) ... ok
+test_original_id_and_safe_path_mapping (test_runtime.RuntimeTests) ... ok
+test_prompt_preserves_existing_spec_inputs_directory (test_runtime.RuntimeTests) ... ok
+test_rebuttal_needs_reviewer_disposition (test_runtime.RuntimeTests) ... ok
+test_recover_does_not_rerun_unknown_write (test_runtime.RuntimeTests) ... ok
+test_resume_must_return_requested_session (test_runtime.RuntimeTests) ... ok
+test_round1_stops_when_passed (test_runtime.RuntimeTests) ... ok
+test_round3_fresh_and_fallback (test_runtime.RuntimeTests) ... ok
+test_session_cannot_cross_roles (test_runtime.RuntimeTests) ... ok
+test_stale_review_refused (test_runtime.RuntimeTests) ... ok
+test_timeout_kills_process_and_no_review_credit (test_runtime.RuntimeTests) ... ok
+test_unverified_final_prevents_overall_success (test_runtime.RuntimeTests) ... ok
+test_wait_answer_preserves_round_and_decisions (test_runtime.RuntimeTests) ... ok
+
+----------------------------------------------------------------------
+Ran 100 tests in 13.256s
+
+OK
+usage: make_fixture.py [-h]
+
+Create the user-approved isolated, local-only validation repository.
+
+optional arguments:
+  -h, --help  show this help message and exit

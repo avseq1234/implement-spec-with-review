@@ -1,0 +1,74 @@
+
+test_interfaces_exist (test_baseline.Baseline) ... ok
+test_negative_int_raises_value_error (test_validate_positive_integer.ValidatePositiveIntegerTests) ... FAIL
+test_non_builtin_int_values_raise_type_error (test_validate_positive_integer.ValidatePositiveIntegerTests) ... test_positive_builtin_int_is_returned_unchanged (test_validate_positive_integer.ValidatePositiveIntegerTests) ... FAIL
+test_zero_raises_value_error (test_validate_positive_integer.ValidatePositiveIntegerTests) ... FAIL
+
+======================================================================
+FAIL: test_negative_int_raises_value_error (test_validate_positive_integer.ValidatePositiveIntegerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-59296sn_/tests/test_validate_positive_integer.py", line 18, in test_negative_int_raises_value_error
+    validate_positive_integer(-1)
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_non_builtin_int_values_raise_type_error (test_validate_positive_integer.ValidatePositiveIntegerTests) (value=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-59296sn_/tests/test_validate_positive_integer.py", line 26, in test_non_builtin_int_values_raise_type_error
+    validate_positive_integer(value)
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_non_builtin_int_values_raise_type_error (test_validate_positive_integer.ValidatePositiveIntegerTests) (value=1.5)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-59296sn_/tests/test_validate_positive_integer.py", line 26, in test_non_builtin_int_values_raise_type_error
+    validate_positive_integer(value)
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_non_builtin_int_values_raise_type_error (test_validate_positive_integer.ValidatePositiveIntegerTests) (value='1')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-59296sn_/tests/test_validate_positive_integer.py", line 26, in test_non_builtin_int_values_raise_type_error
+    validate_positive_integer(value)
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_non_builtin_int_values_raise_type_error (test_validate_positive_integer.ValidatePositiveIntegerTests) (value=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-59296sn_/tests/test_validate_positive_integer.py", line 26, in test_non_builtin_int_values_raise_type_error
+    validate_positive_integer(value)
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_non_builtin_int_values_raise_type_error (test_validate_positive_integer.ValidatePositiveIntegerTests) (value=<object object at 0x10284c9a0>)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-59296sn_/tests/test_validate_positive_integer.py", line 26, in test_non_builtin_int_values_raise_type_error
+    validate_positive_integer(value)
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_positive_builtin_int_is_returned_unchanged (test_validate_positive_integer.ValidatePositiveIntegerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-59296sn_/tests/test_validate_positive_integer.py", line 10, in test_positive_builtin_int_is_returned_unchanged
+    self.assertIs(validate_positive_integer(value), value)
+AssertionError: None is not 7
+
+======================================================================
+FAIL: test_zero_raises_value_error (test_validate_positive_integer.ValidatePositiveIntegerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-59296sn_/tests/test_validate_positive_integer.py", line 14, in test_zero_raises_value_error
+    validate_positive_integer(0)
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+FAILED (failures=8)

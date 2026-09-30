@@ -1,0 +1,19 @@
+test_effort_no_silent_downgrade (test_primitives.PrimitiveTests.test_effort_no_silent_downgrade) ... ok
+test_explicit_reuse (test_primitives.PrimitiveTests.test_explicit_reuse) ... ok
+test_missing_review_scope_rejected (test_primitives.PrimitiveTests.test_missing_review_scope_rejected) ... ok
+test_no_implicit_reuse (test_primitives.PrimitiveTests.test_no_implicit_reuse) ... ok
+test_partial_role_settings_preserved (test_primitives.PrimitiveTests.test_partial_role_settings_preserved) ... ok
+test_provider_mismatch_is_rejected (test_primitives.PrimitiveTests.test_provider_mismatch_is_rejected) ... ok
+test_required_budget (test_primitives.PrimitiveTests.test_required_budget) ... ok
+test_roles_are_independent (test_primitives.PrimitiveTests.test_roles_are_independent) ... ok
+test_snapshot_captures_modes_and_symlinks (test_primitives.PrimitiveTests.test_snapshot_captures_modes_and_symlinks) ... ok
+test_snapshots_include_untracked_and_dirty_but_exclude_runtime (test_primitives.PrimitiveTests.test_snapshots_include_untracked_and_dirty_but_exclude_runtime) ... ok
+test_supplied_roles_not_asked_again (test_primitives.PrimitiveTests.test_supplied_roles_not_asked_again) ... ok
+test_uncertainty_needs_evidence_and_options (test_primitives.PrimitiveTests.test_uncertainty_needs_evidence_and_options) ... ok
+test_unproven_finding_not_confirmed (test_primitives.PrimitiveTests.test_unproven_finding_not_confirmed) ... ok
+test_valid_review (test_primitives.PrimitiveTests.test_valid_review) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.187s
+
+OK

@@ -1,0 +1,145 @@
+test_effort_no_silent_downgrade (test_primitives.PrimitiveTests.test_effort_no_silent_downgrade) ... FAIL
+test_explicit_reuse (test_primitives.PrimitiveTests.test_explicit_reuse) ... FAIL
+test_missing_review_scope_rejected (test_primitives.PrimitiveTests.test_missing_review_scope_rejected) ... FAIL
+test_no_implicit_reuse (test_primitives.PrimitiveTests.test_no_implicit_reuse) ... ERROR
+test_partial_role_settings_preserved (test_primitives.PrimitiveTests.test_partial_role_settings_preserved) ... ERROR
+test_provider_mismatch_is_rejected (test_primitives.PrimitiveTests.test_provider_mismatch_is_rejected) ... FAIL
+test_required_budget (test_primitives.PrimitiveTests.test_required_budget) ... FAIL
+test_roles_are_independent (test_primitives.PrimitiveTests.test_roles_are_independent) ... FAIL
+test_snapshot_captures_modes_and_symlinks (test_primitives.PrimitiveTests.test_snapshot_captures_modes_and_symlinks) ... FAIL
+test_snapshots_include_untracked_and_dirty_but_exclude_runtime (test_primitives.PrimitiveTests.test_snapshots_include_untracked_and_dirty_but_exclude_runtime) ... FAIL
+test_supplied_roles_not_asked_again (test_primitives.PrimitiveTests.test_supplied_roles_not_asked_again) ... FAIL
+test_uncertainty_needs_evidence_and_options (test_primitives.PrimitiveTests.test_uncertainty_needs_evidence_and_options) ... FAIL
+test_unproven_finding_not_confirmed (test_primitives.PrimitiveTests.test_unproven_finding_not_confirmed) ... FAIL
+test_valid_review (test_primitives.PrimitiveTests.test_valid_review) ... FAIL
+
+======================================================================
+ERROR: test_no_implicit_reuse (test_primitives.PrimitiveTests.test_no_implicit_reuse)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_primitives.py", line 44, in test_no_implicit_reuse
+    self.assertEqual(resolve_roles({}, config()['roles'])['missing'], ['primary','reviewer','fallback'])
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_partial_role_settings_preserved (test_primitives.PrimitiveTests.test_partial_role_settings_preserved)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_primitives.py", line 48, in test_partial_role_settings_preserved
+    self.assertEqual(resolve_roles({'primary':{'model':'gpt-5.6-sol'}})['roles']['primary']['model'], 'gpt-5.6-sol')
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+FAIL: test_effort_no_silent_downgrade (test_primitives.PrimitiveTests.test_effort_no_silent_downgrade)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_primitives.py", line 37, in test_effort_no_silent_downgrade
+    with self.assertRaises(Stop): validate_config(c)
+         ~~~~~~~~~~~~~~~~~^^^^^^
+AssertionError: Stop not raised
+
+======================================================================
+FAIL: test_explicit_reuse (test_primitives.PrimitiveTests.test_explicit_reuse)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_primitives.py", line 46, in test_explicit_reuse
+    c=config()['roles']; self.assertEqual(resolve_roles({}, c, True), {'roles':c,'missing':[]})
+                         ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: None != {'roles': {'primary': {'provider': 'codex[660 chars]: []}
+
+======================================================================
+FAIL: test_missing_review_scope_rejected (test_primitives.PrimitiveTests.test_missing_review_scope_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_primitives.py", line 52, in test_missing_review_scope_rejected
+    with self.assertRaises(Stop): validate_report(r,'review')
+         ~~~~~~~~~~~~~~~~~^^^^^^
+AssertionError: Stop not raised
+
+======================================================================
+FAIL: test_provider_mismatch_is_rejected (test_primitives.PrimitiveTests.test_provider_mismatch_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_primitives.py", line 34, in test_provider_mismatch_is_rejected
+    with self.assertRaises(Stop): validate_config(c)
+         ~~~~~~~~~~~~~~~~~^^^^^^
+AssertionError: Stop not raised
+
+======================================================================
+FAIL: test_required_budget (test_primitives.PrimitiveTests.test_required_budget)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_primitives.py", line 40, in test_required_budget
+    with self.assertRaises(Stop): validate_config(c)
+         ~~~~~~~~~~~~~~~~~^^^^^^
+AssertionError: Stop not raised
+
+======================================================================
+FAIL: test_roles_are_independent (test_primitives.PrimitiveTests.test_roles_are_independent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_primitives.py", line 30, in test_roles_are_independent
+    c=config(); self.assertEqual(validate_config(c), c)
+                ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: None != {'roles': {'primary': {'provider': 'codex[947 chars]alse}
+
+======================================================================
+FAIL: test_snapshot_captures_modes_and_symlinks (test_primitives.PrimitiveTests.test_snapshot_captures_modes_and_symlinks)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_primitives.py", line 72, in test_snapshot_captures_modes_and_symlinks
+    (p/'a').write_text('x'); a=snapshot(p); self.assertIsInstance(a,dict)
+                                            ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+AssertionError: None is not an instance of <class 'dict'>
+
+======================================================================
+FAIL: test_snapshots_include_untracked_and_dirty_but_exclude_runtime (test_primitives.PrimitiveTests.test_snapshots_include_untracked_and_dirty_but_exclude_runtime)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_primitives.py", line 64, in test_snapshots_include_untracked_and_dirty_but_exclude_runtime
+    self.assertIsInstance(a, dict); self.assertIn('a.py',a['files'])
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+AssertionError: None is not an instance of <class 'dict'>
+
+======================================================================
+FAIL: test_supplied_roles_not_asked_again (test_primitives.PrimitiveTests.test_supplied_roles_not_asked_again)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_primitives.py", line 42, in test_supplied_roles_not_asked_again
+    c=config()['roles']; self.assertEqual(resolve_roles(c), {'roles':c,'missing':[]})
+                         ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: None != {'roles': {'primary': {'provider': 'codex[660 chars]: []}
+
+======================================================================
+FAIL: test_uncertainty_needs_evidence_and_options (test_primitives.PrimitiveTests.test_uncertainty_needs_evidence_and_options)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_primitives.py", line 55, in test_uncertainty_needs_evidence_and_options
+    with self.assertRaises(Stop): validate_report(r,'implement')
+         ~~~~~~~~~~~~~~~~~^^^^^^
+AssertionError: Stop not raised
+
+======================================================================
+FAIL: test_unproven_finding_not_confirmed (test_primitives.PrimitiveTests.test_unproven_finding_not_confirmed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_primitives.py", line 59, in test_unproven_finding_not_confirmed
+    with self.assertRaises(Stop): validate_report(r,'review')
+         ~~~~~~~~~~~~~~~~~^^^^^^
+AssertionError: Stop not raised
+
+======================================================================
+FAIL: test_valid_review (test_primitives.PrimitiveTests.test_valid_review)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_primitives.py", line 49, in test_valid_review
+    def test_valid_review(self): self.assertEqual(validate_report(review(), 'review'), review())
+                                 ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: None != {'status': 'REVIEW_COMPLETE', 'snapshot':[328 chars]: []}
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.107s
+
+FAILED (failures=12, errors=2)

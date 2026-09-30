@@ -1,0 +1,329 @@
+You are the selected external reviewer CLI, managed by a Review subagent. Work in the isolated candidate copy; never modify delivery source, specs, tests or canonical logs. The candidate snapshot ID in the packet identifies the original repository's code, not the copy's git HEAD. Do not commit. Any writable reproduction requires a separate isolated scratch directory and must not alter this candidate. If sandbox prevents a necessary reproduction, report it as unverified or NEEDS_USER_INPUT; do not bypass permissions.
+
+Read the original document copies, acceptance criteria, candidate source, relevant callers/interfaces, dependencies, and cumulative task changes. Review normal, boundary/error paths, real requirements coverage, integration with previous tasks, relevant security/data integrity/concurrency/performance/compatibility, out-of-scope changes, TODO/stub/workarounds. Find all evidence-supported defects, not just the first; no quotas or stylistic filler. A later review still covers task whole, not only known findings or delta.
+
+If phase=independent: form your OWN findings first. Do NOT look for previous review logs, conclusions or ledgers. Return and let runner durably save your complete independent report. In phase=reconcile, reread your saved independent findings, then compare the supplied previous ledger, rebuttals and decisions. Deduplicate with stable IDs. Do not erase an independent issue without explicit evidence-based disposition. Reappearing defects are OPEN even if previously fixed. Do not silently change a blocking finding into a non-blocking one.
+
+Each finding: stable ID, P0/P1/P2/P3, blocking boolean, file/line, violated requirement, trigger, impact, concrete evidence/reproduction and fix/verification direction. Unproven suspicions are not confirmed findings. Investigate read-only; unresolved ambiguity returns NEEDS_USER_INPUT (questions, evidence, options+impacts, affected task IDs). A reviewer opinion cannot replace a user decision. For known fixes use VERIFIED_FIXED only after verifying evidence; rebuttals can be DISMISSED_WITH_EVIDENCE or reopened. Never close without evidence.
+
+Report coverage by acceptance ID, unverified items and reasons, and all scope_checked categories: requirements, normal, boundary, error, tests, callers, interfaces, cumulative_changes, security, data_integrity, concurrency, performance, compatibility, scope. Return schema-complete JSON with REVIEW_COMPLETE and the EXACT input snapshot. Unneeded fields use empty arrays, tdd=not-applicable. Do not infer the task passed from prior review status. Runner determines rounds and gates.
+
+The acceptance and coverage arrays contain EXACT acceptance ID strings from the packet, e.g. ["AC1"], never IDs with prose suffixes. Put explanatory coverage details in summary. verification_evidence contains actual runner/capture receipts and output files; review those for TDD timing. The general policy allowing test-after is NOT evidence that this task used test-after. Do not mark already-provided TDD evidence unverified merely because the isolation copy has no commit history.
+
+
+INPUT PACKET
+{
+  "task": {
+    "acceptance": [
+      "AC2"
+    ],
+    "dependencies": [
+      "1.1"
+    ],
+    "gates": [
+      {
+        "argv": [
+          "/opt/homebrew/opt/python@3.14/bin/python3.14",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "id": "suite"
+      }
+    ],
+    "high_risk": false,
+    "id": "1.2",
+    "requirements": [
+      "R2"
+    ]
+  },
+  "documents": [
+    {
+      "path": "/private/tmp/implement-spec-smoke-u62liu1c/.spec-runs/20260927T000412+0800-086903e0/tasks/1.2-77ac319b/review-workspaces/262df99fe3bb4fbea65baa00fd86027d/_spec_inputs/0-high-level.md",
+      "kind": "high-level",
+      "sha256": "e1051dc7fac6580e98d228d292d0f97720a1d8f958237056360a86a3b6a65f95"
+    },
+    {
+      "path": "/private/tmp/implement-spec-smoke-u62liu1c/.spec-runs/20260927T000412+0800-086903e0/tasks/1.2-77ac319b/review-workspaces/262df99fe3bb4fbea65baa00fd86027d/_spec_inputs/1-tasks.md",
+      "kind": "tasks",
+      "sha256": "8a4c5a520252913392c423b5601677cdcc4b705a5cf0a8cf6937f7989208039e"
+    },
+    {
+      "path": "/private/tmp/implement-spec-smoke-u62liu1c/.spec-runs/20260927T000412+0800-086903e0/tasks/1.2-77ac319b/review-workspaces/262df99fe3bb4fbea65baa00fd86027d/_spec_inputs/2-spec.md",
+      "kind": "spec",
+      "sha256": "dcf3f5f6738e50258401f28094561b6e3e59fbdc655e6f8b6b9fdae3319b7edf"
+    },
+    {
+      "path": "/private/tmp/implement-spec-smoke-u62liu1c/.spec-runs/20260927T000412+0800-086903e0/tasks/1.2-77ac319b/review-workspaces/262df99fe3bb4fbea65baa00fd86027d/_spec_inputs/3-design.md",
+      "kind": "design",
+      "sha256": "9efc467699fbe220878fcc6f1a67f26d2810ad55de9e1c16604492ab56f913fa"
+    },
+    {
+      "path": "/private/tmp/implement-spec-smoke-u62liu1c/.spec-runs/20260927T000412+0800-086903e0/tasks/1.2-77ac319b/review-workspaces/262df99fe3bb4fbea65baa00fd86027d/_spec_inputs/4-proposal.md",
+      "kind": "proposal",
+      "sha256": "35eb885d5fa911991ac1358ebbffe35cb92d49ad72e422cb5138fd29f24910cc"
+    }
+  ],
+  "constraints": [
+    "pure functions",
+    "no third-party dependencies",
+    "no scope expansion",
+    "preserve input and original files"
+  ],
+  "snapshot": "8efbb65ae488217dfb13050c7c96ef34adced8f78c1de5c3b1672af756c16ff5",
+  "verification_evidence": [
+    {
+      "after_snapshot": "a9280fcb74d5327c2abf77cfad1ce544d1f82fa8973f7a9835e521ee5eb0547b",
+      "argv": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "duration_seconds": 0.10963582992553711,
+      "exit_code": 0,
+      "expected_failure": "",
+      "finished_at": 1790505422.604435,
+      "gate": "suite",
+      "id": "5327f7e2f08b4537975d35733afb96e5",
+      "invocation": "72df65d695564df599d63c4e0fa6264f",
+      "output_sha256": "b152ad9cd9d7c4950e11917ac7bfc25d9d458cc2b52956c2e282220ca74f1476",
+      "phase": "green",
+      "red_expected": false,
+      "snapshot": "a9280fcb74d5327c2abf77cfad1ce544d1f82fa8973f7a9835e521ee5eb0547b",
+      "started_at": 1790505422.4947991,
+      "timeout": false,
+      "evidence_file": "/private/tmp/implement-spec-smoke-u62liu1c/.spec-runs/20260927T000412+0800-086903e0/tasks/1.2-77ac319b/review-workspaces/262df99fe3bb4fbea65baa00fd86027d/_spec_inputs/evidence-5327f7e2f08b4537975d35733afb96e5.txt"
+    },
+    {
+      "after_snapshot": "8efbb65ae488217dfb13050c7c96ef34adced8f78c1de5c3b1672af756c16ff5",
+      "argv": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "duration_seconds": 0.10596108436584473,
+      "exit_code": 0,
+      "expected_failure": "",
+      "finished_at": 1790505441.078623,
+      "gate": "suite",
+      "id": "bbf1bed3b49d42f08c6ab626be68035b",
+      "invocation": "72df65d695564df599d63c4e0fa6264f",
+      "output_sha256": "b152ad9cd9d7c4950e11917ac7bfc25d9d458cc2b52956c2e282220ca74f1476",
+      "phase": "green",
+      "red_expected": false,
+      "snapshot": "8efbb65ae488217dfb13050c7c96ef34adced8f78c1de5c3b1672af756c16ff5",
+      "started_at": 1790505440.972662,
+      "timeout": false,
+      "evidence_file": "/private/tmp/implement-spec-smoke-u62liu1c/.spec-runs/20260927T000412+0800-086903e0/tasks/1.2-77ac319b/review-workspaces/262df99fe3bb4fbea65baa00fd86027d/_spec_inputs/evidence-bbf1bed3b49d42f08c6ab626be68035b.txt"
+    },
+    {
+      "after_snapshot": "3644b139d48fe768322e5d2b3f5d2a5281be6c2ef321b50c2762dc518ba859ef",
+      "argv": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "duration_seconds": 0.10420584678649902,
+      "exit_code": 1,
+      "expected_failure": "AssertionError: None != []",
+      "finished_at": 1790505412.1427681,
+      "gate": "suite",
+      "id": "d298e1b868cb49ccbc114c8d6a9bf8e0",
+      "invocation": "72df65d695564df599d63c4e0fa6264f",
+      "output_sha256": "1f60597186818d80c289fec6d54d1b24ee425984e54ac68d6530426040e55e33",
+      "phase": "red",
+      "red_expected": true,
+      "snapshot": "3644b139d48fe768322e5d2b3f5d2a5281be6c2ef321b50c2762dc518ba859ef",
+      "started_at": 1790505412.038563,
+      "timeout": false,
+      "evidence_file": "/private/tmp/implement-spec-smoke-u62liu1c/.spec-runs/20260927T000412+0800-086903e0/tasks/1.2-77ac319b/review-workspaces/262df99fe3bb4fbea65baa00fd86027d/_spec_inputs/evidence-d298e1b868cb49ccbc114c8d6a9bf8e0.txt"
+    },
+    {
+      "after_snapshot": "8efbb65ae488217dfb13050c7c96ef34adced8f78c1de5c3b1672af756c16ff5",
+      "approved_baseline": false,
+      "argv": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "duration_seconds": 0.09753775596618652,
+      "exit_code": 0,
+      "expected_failure": "",
+      "finished_at": 1790505468.9749498,
+      "gate": "suite",
+      "id": "25c6a8d080e64dd3b36c0ec439c5d1ee",
+      "invocation": null,
+      "output_sha256": "b152ad9cd9d7c4950e11917ac7bfc25d9d458cc2b52956c2e282220ca74f1476",
+      "phase": "gate",
+      "red_expected": false,
+      "snapshot": "8efbb65ae488217dfb13050c7c96ef34adced8f78c1de5c3b1672af756c16ff5",
+      "started_at": 1790505468.877412,
+      "timeout": false,
+      "evidence_file": "/private/tmp/implement-spec-smoke-u62liu1c/.spec-runs/20260927T000412+0800-086903e0/tasks/1.2-77ac319b/review-workspaces/262df99fe3bb4fbea65baa00fd86027d/_spec_inputs/evidence-25c6a8d080e64dd3b36c0ec439c5d1ee.txt"
+    }
+  ],
+  "tdd_note": "Policy permits disclosed test-after; actual receipts below determine whether THIS implementation was test-first.",
+  "phase": "reconcile",
+  "decisions": [
+    {
+      "answer": "User confirmed fixture validation, Codex primary medium / reviewer high / fallback xhigh, budgets 600 seconds per call, 30 calls, 5400 active seconds, retry 1, context checkpoint-resume, no baseline exceptions. Keep original code; test-after must be disclosed and verified without pausing solely for that deviation. Documentation uses structural and independent scenario validation. Claude remains untested. Controlled fallback session-switch smoke is authorized; no fabricated production finding.\n",
+      "at": "2026-09-27T02:32:01.368418+00:00",
+      "questions": [
+        "Initial plan, roles, gates, budgets, exceptions and session policy"
+      ],
+      "scope": [
+        "1.1",
+        "1.2",
+        "_final"
+      ],
+      "version": 1
+    }
+  ],
+  "required_decision_version": 1,
+  "dependency_contracts": [
+    {
+      "id": "1.1",
+      "acceptance": [
+        "AC1"
+      ],
+      "summary": "Implemented the pure scalar validator for task 1.1 and added contract-focused unit tests. The batch placeholder remains unchanged and out of scope."
+    }
+  ],
+  "capture_command": [
+    "/opt/homebrew/opt/python@3.14/bin/python3.14",
+    "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/scripts/capture.py",
+    "--context",
+    "/private/tmp/implement-spec-smoke-u62liu1c/.spec-runs/20260927T000412+0800-086903e0/tasks/1.2-77ac319b/round-01/fcb1e4a7eb81490ab51ef119d723e3f5/capture-context.json"
+  ],
+  "cumulative_diff": "diff --git a/lib.py b/lib.py\nindex 4f4e4c7..a4b72b7 100644\n--- a/lib.py\n+++ b/lib.py\n@@ -1,5 +1,11 @@\n def validate_positive_integer(value):\n-    return None\n+    if type(value) is not int:\n+        raise TypeError(\"value must be a built-in int\")\n+    if value <= 0:\n+        raise ValueError(\"value must be greater than zero\")\n+    return value\n \n def validate_batch(values):\n-    return None\n+    if type(values) is not list:\n+        raise TypeError(\"values must be a built-in list\")\n+    return [validate_positive_integer(value) for value in values]\n",
+  "candidate_files": {
+    ".gitignore": {
+      "sha256": "862263fa1f46c20f0d1e4dac5ffcc75abd55c08211b2c3864c5f8764b9d87793",
+      "mode": 420,
+      "symlink": false,
+      "size": 19
+    },
+    "high-level.md": {
+      "sha256": "e1051dc7fac6580e98d228d292d0f97720a1d8f958237056360a86a3b6a65f95",
+      "mode": 420,
+      "symlink": false,
+      "size": 272
+    },
+    "lib.py": {
+      "sha256": "f0bfc9fed449a9296ae23ca9dc3835294e111b9df1d49df55ece9a0290e56a00",
+      "mode": 420,
+      "symlink": false,
+      "size": 407
+    },
+    "openspec/design.md": {
+      "sha256": "9efc467699fbe220878fcc6f1a67f26d2810ad55de9e1c16604492ab56f913fa",
+      "mode": 420,
+      "symlink": false,
+      "size": 187
+    },
+    "openspec/proposal.md": {
+      "sha256": "35eb885d5fa911991ac1358ebbffe35cb92d49ad72e422cb5138fd29f24910cc",
+      "mode": 420,
+      "symlink": false,
+      "size": 136
+    },
+    "openspec/spec.md": {
+      "sha256": "dcf3f5f6738e50258401f28094561b6e3e59fbdc655e6f8b6b9fdae3319b7edf",
+      "mode": 420,
+      "symlink": false,
+      "size": 709
+    },
+    "openspec/tasks.md": {
+      "sha256": "8a4c5a520252913392c423b5601677cdcc4b705a5cf0a8cf6937f7989208039e",
+      "mode": 420,
+      "symlink": false,
+      "size": 127
+    },
+    "tests/test_baseline.py": {
+      "sha256": "5fc0597a466e2fa9351ac0d824ae95c9f1ca5922f05ac24a83d201d565ec0b22",
+      "mode": 420,
+      "symlink": false,
+      "size": 218
+    },
+    "tests/test_batch.py": {
+      "sha256": "f3819cb30cf2ca82a79b61714c91e5da837825b8a8942909a92b834cdc707eb4",
+      "mode": 420,
+      "symlink": false,
+      "size": 1395
+    },
+    "tests/test_positive_integer.py": {
+      "sha256": "8bc004aeb53dee57916b53ad1d1dfe733a35ad9f82da1d9236a1e4fc39537110",
+      "mode": 420,
+      "symlink": false,
+      "size": 857
+    }
+  },
+  "quality_gates": [
+    {
+      "argv": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "id": "suite"
+    }
+  ],
+  "tdd_exception": false,
+  "finding_ledger": {},
+  "independent_findings": {
+    "acceptance": [
+      "AC2"
+    ],
+    "coverage": [
+      "AC2"
+    ],
+    "finding_updates": [],
+    "findings": [],
+    "questions": [],
+    "responses": [],
+    "scope_checked": [
+      "requirements",
+      "normal",
+      "boundary",
+      "error",
+      "tests",
+      "callers",
+      "interfaces",
+      "cumulative_changes",
+      "security",
+      "data_integrity",
+      "concurrency",
+      "performance",
+      "compatibility",
+      "scope"
+    ],
+    "snapshot": "8efbb65ae488217dfb13050c7c96ef34adced8f78c1de5c3b1672af756c16ff5",
+    "status": "REVIEW_COMPLETE",
+    "summary": "AC2 is fully implemented with no evidence-supported defects. validate_batch accepts only built-in lists, returns a distinct ordered list, delegates every element to the R1 validator, propagates the first validation exception, and preserves its input. All 8 supplied tests and independent boundary/error scenarios passed. Document and candidate-file hashes match the packet. TDD is verified test-first by the supplied red receipt d298e1b868cb49ccbc114c8d6a9bf8e0 followed by passing green and final-gate receipts.",
+    "tdd": "test-first",
+    "unverified": []
+  }
+}

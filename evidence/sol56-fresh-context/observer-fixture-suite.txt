@@ -1,0 +1,15 @@
+test_interfaces_exist (test_baseline.Baseline) ... ok
+test_empty_list_returns_a_new_empty_list (test_validate_batch.ValidateBatchTests) ... ok
+test_invalid_element_propagates_exact_exception_without_continuing (test_validate_batch.ValidateBatchTests) ... ok
+test_non_builtin_list_inputs_raise_type_error (test_validate_batch.ValidateBatchTests) ... ok
+test_real_scalar_errors_are_preserved (test_validate_batch.ValidateBatchTests) ... ok
+test_valid_values_preserve_order_and_input (test_validate_batch.ValidateBatchTests) ... ok
+test_negative_int_raises_value_error (test_validate_positive_integer.ValidatePositiveIntegerTests) ... ok
+test_non_builtin_int_values_raise_type_error (test_validate_positive_integer.ValidatePositiveIntegerTests) ... ok
+test_positive_builtin_int_is_returned_unchanged (test_validate_positive_integer.ValidatePositiveIntegerTests) ... ok
+test_zero_raises_value_error (test_validate_positive_integer.ValidatePositiveIntegerTests) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.001s
+
+OK

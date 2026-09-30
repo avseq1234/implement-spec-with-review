@@ -1,0 +1,45 @@
+test_claude_provider_effort_and_id (test_adapters.AdapterTests.test_claude_provider_effort_and_id) ... ok
+test_claude_structured_result (test_adapters.AdapterTests.test_claude_structured_result) ... ok
+test_codex_complete_stream (test_adapters.AdapterTests.test_codex_complete_stream) ... ok
+test_codex_noninteractive_safe_argv (test_adapters.AdapterTests.test_codex_noninteractive_safe_argv) ... ok
+test_explicit_resume_never_last (test_adapters.AdapterTests.test_explicit_resume_never_last) ... ok
+test_malformed_output_rejected (test_adapters.AdapterTests.test_malformed_output_rejected) ... ok
+test_non_success_claude_rejected (test_adapters.AdapterTests.test_non_success_claude_rejected) ... ok
+test_prompt_injection_not_shell (test_adapters.AdapterTests.test_prompt_injection_not_shell) ... ok
+test_truncated_codex_rejected (test_adapters.AdapterTests.test_truncated_codex_rejected) ... ok
+test_any_round2_gate_failure_triggers_fallback (test_engine.EngineTests.test_any_round2_gate_failure_triggers_fallback) ... ok
+test_baseline_not_silent (test_engine.EngineTests.test_baseline_not_silent) ... ok
+test_closed_regression_reopens (test_engine.EngineTests.test_closed_regression_reopens) ... ok
+test_five_round_cap_and_no_post_round5_fix (test_engine.EngineTests.test_five_round_cap_and_no_post_round5_fix) ... ok
+test_high_risk_needs_second_independent_and_survives_reload (test_engine.EngineTests.test_high_risk_needs_second_independent_and_survives_reload) ... ok
+test_implementer_cannot_close_findings (test_engine.EngineTests.test_implementer_cannot_close_findings) ... ok
+test_independent_blocking_not_silently_downgraded (test_engine.EngineTests.test_independent_blocking_not_silently_downgraded) ... ok
+test_manager_replacement_preserves_round (test_engine.EngineTests.test_manager_replacement_preserves_round) ... ok
+test_original_id_and_safe_path_mapping (test_engine.EngineTests.test_original_id_and_safe_path_mapping) ... ok
+test_rebuttal_needs_reviewer_disposition (test_engine.EngineTests.test_rebuttal_needs_reviewer_disposition) ... ok
+test_resume_must_return_requested_session (test_engine.EngineTests.test_resume_must_return_requested_session) ... ok
+test_round1_stops_when_passed (test_engine.EngineTests.test_round1_stops_when_passed) ... ok
+test_round3_fresh_and_fallback (test_engine.EngineTests.test_round3_fresh_and_fallback) ... ok
+test_session_cannot_cross_roles (test_engine.EngineTests.test_session_cannot_cross_roles) ... ok
+test_stale_review_refused (test_engine.EngineTests.test_stale_review_refused) ... ok
+test_unverified_final_prevents_overall_success (test_engine.EngineTests.test_unverified_final_prevents_overall_success) ... ok
+test_wait_answer_preserves_round_and_decisions (test_engine.EngineTests.test_wait_answer_preserves_round_and_decisions) ... ok
+test_effort_no_silent_downgrade (test_primitives.PrimitiveTests.test_effort_no_silent_downgrade) ... ok
+test_explicit_reuse (test_primitives.PrimitiveTests.test_explicit_reuse) ... ok
+test_missing_review_scope_rejected (test_primitives.PrimitiveTests.test_missing_review_scope_rejected) ... ok
+test_no_implicit_reuse (test_primitives.PrimitiveTests.test_no_implicit_reuse) ... ok
+test_partial_role_settings_preserved (test_primitives.PrimitiveTests.test_partial_role_settings_preserved) ... ok
+test_provider_mismatch_is_rejected (test_primitives.PrimitiveTests.test_provider_mismatch_is_rejected) ... ok
+test_required_budget (test_primitives.PrimitiveTests.test_required_budget) ... ok
+test_roles_are_independent (test_primitives.PrimitiveTests.test_roles_are_independent) ... ok
+test_snapshot_captures_modes_and_symlinks (test_primitives.PrimitiveTests.test_snapshot_captures_modes_and_symlinks) ... ok
+test_snapshots_include_untracked_and_dirty_but_exclude_runtime (test_primitives.PrimitiveTests.test_snapshots_include_untracked_and_dirty_but_exclude_runtime) ... ok
+test_supplied_roles_not_asked_again (test_primitives.PrimitiveTests.test_supplied_roles_not_asked_again) ... ok
+test_uncertainty_needs_evidence_and_options (test_primitives.PrimitiveTests.test_uncertainty_needs_evidence_and_options) ... ok
+test_unproven_finding_not_confirmed (test_primitives.PrimitiveTests.test_unproven_finding_not_confirmed) ... ok
+test_valid_review (test_primitives.PrimitiveTests.test_valid_review) ... ok
+
+----------------------------------------------------------------------
+Ran 40 tests in 4.285s
+
+OK

@@ -1,0 +1,54 @@
+{
+  "result": "PASS",
+  "run": "/private/tmp/implement-spec-smoke-59296sn_/.spec-runs/20260929T010824+0800-89cb279b",
+  "candidate_snapshot": "7d762de0c818085b72c73a418b06ca6e9bdc46ac3554ffbdaed92c39bcf7b992",
+  "tasks": {
+    "1.1": {
+      "status": "VERIFIED",
+      "round": 1,
+      "snapshot": "788fd6e61bc7a5a36c48d9b01326f11a8a83ee7d31798a7c8d53f948fbdc84af",
+      "managers": {
+        "execution": "/root/sol56_fresh_orchestrator_v2/task_1_1_execution",
+        "review": "/root/sol56_fresh_orchestrator_v2/task_1_1_review"
+      }
+    },
+    "1.2": {
+      "status": "VERIFIED",
+      "round": 1,
+      "snapshot": "7d762de0c818085b72c73a418b06ca6e9bdc46ac3554ffbdaed92c39bcf7b992",
+      "managers": {
+        "execution": "/root/sol56_fresh_orchestrator_v2/task_1_2_execution",
+        "review": "/root/sol56_fresh_orchestrator_v2/task_1_2_review"
+      }
+    },
+    "_final": {
+      "status": "VERIFIED",
+      "round": 1,
+      "snapshot": "7d762de0c818085b72c73a418b06ca6e9bdc46ac3554ffbdaed92c39bcf7b992",
+      "managers": {
+        "execution": "/root/sol56_fresh_orchestrator_v2/final_gate_manager",
+        "review": "/root/sol56_fresh_orchestrator_v2/final_review_manager"
+      }
+    }
+  },
+  "journal_frames_verified": 59,
+  "evidence_output_hashes_verified": 10,
+  "distinct_managers": 6,
+  "sessions": 6,
+  "metrics": {
+    "active_seconds": 537.243898417786,
+    "calls": 9,
+    "cost": null,
+    "tokens": null,
+    "user_wait_seconds": 0.0
+  },
+  "skill_unchanged_during_attempt": true,
+  "observer_acceptance": "7/7 passed",
+  "fixture_tests": "10/10 passed",
+  "notes": [
+    "Attempt started with fresh SOL 5.6/high context, resumed same agent after user-approved continuation from usage limit.",
+    "Task 1.2 first independent review included an accidental manager temp file. SOL preserved it, restored original candidate and independently re-reviewed in a new session without observer coaching.",
+    "All nine provider invocations completed; only reconciled current-candidate reviews count as effective rounds.",
+    "Fallback, high-risk extra round and fifth-round stop were not triggered by this fixture."
+  ]
+}

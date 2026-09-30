@@ -1,0 +1,92 @@
+
+test_interfaces_exist (test_baseline.Baseline.test_interfaces_exist) ... ok
+test_empty_list_returns_distinct_empty_list (test_batch.ValidateBatchTests.test_empty_list_returns_distinct_empty_list) ... FAIL
+test_invalid_elements_use_scalar_contract_and_preserve_input (test_batch.ValidateBatchTests.test_invalid_elements_use_scalar_contract_and_preserve_input) ... 
+  test_invalid_elements_use_scalar_contract_and_preserve_input (test_batch.ValidateBatchTests.test_invalid_elements_use_scalar_contract_and_preserve_input) (values=[1, True, 2]) ... FAIL
+  test_invalid_elements_use_scalar_contract_and_preserve_input (test_batch.ValidateBatchTests.test_invalid_elements_use_scalar_contract_and_preserve_input) (values=[1, 0, 2]) ... FAIL
+test_rejects_non_builtin_list_inputs (test_batch.ValidateBatchTests.test_rejects_non_builtin_list_inputs) ... 
+  test_rejects_non_builtin_list_inputs (test_batch.ValidateBatchTests.test_rejects_non_builtin_list_inputs) (values=(1, 2)) ... FAIL
+  test_rejects_non_builtin_list_inputs (test_batch.ValidateBatchTests.test_rejects_non_builtin_list_inputs) (values='12') ... FAIL
+  test_rejects_non_builtin_list_inputs (test_batch.ValidateBatchTests.test_rejects_non_builtin_list_inputs) (values=None) ... FAIL
+  test_rejects_non_builtin_list_inputs (test_batch.ValidateBatchTests.test_rejects_non_builtin_list_inputs) (values=[1, 2]) ... FAIL
+test_valid_list_returns_values_in_order_without_modifying_input (test_batch.ValidateBatchTests.test_valid_list_returns_values_in_order_without_modifying_input) ... FAIL
+test_accepts_positive_builtin_integers (test_positive_integer.ValidatePositiveIntegerTests.test_accepts_positive_builtin_integers) ... ok
+test_rejects_bool_and_other_non_builtin_integer_types (test_positive_integer.ValidatePositiveIntegerTests.test_rejects_bool_and_other_non_builtin_integer_types) ... ok
+test_rejects_zero_and_negative_integers (test_positive_integer.ValidatePositiveIntegerTests.test_rejects_zero_and_negative_integers) ... ok
+
+======================================================================
+FAIL: test_empty_list_returns_distinct_empty_list (test_batch.ValidateBatchTests.test_empty_list_returns_distinct_empty_list)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-u62liu1c/tests/test_batch.py", line 12, in test_empty_list_returns_distinct_empty_list
+    self.assertEqual(result, [])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: None != []
+
+======================================================================
+FAIL: test_invalid_elements_use_scalar_contract_and_preserve_input (test_batch.ValidateBatchTests.test_invalid_elements_use_scalar_contract_and_preserve_input) (values=[1, True, 2])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-u62liu1c/tests/test_batch.py", line 39, in test_invalid_elements_use_scalar_contract_and_preserve_input
+    with self.assertRaises(exception_type):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_invalid_elements_use_scalar_contract_and_preserve_input (test_batch.ValidateBatchTests.test_invalid_elements_use_scalar_contract_and_preserve_input) (values=[1, 0, 2])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-u62liu1c/tests/test_batch.py", line 39, in test_invalid_elements_use_scalar_contract_and_preserve_input
+    with self.assertRaises(exception_type):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_rejects_non_builtin_list_inputs (test_batch.ValidateBatchTests.test_rejects_non_builtin_list_inputs) (values=(1, 2))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-u62liu1c/tests/test_batch.py", line 31, in test_rejects_non_builtin_list_inputs
+    with self.assertRaises(TypeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_rejects_non_builtin_list_inputs (test_batch.ValidateBatchTests.test_rejects_non_builtin_list_inputs) (values='12')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-u62liu1c/tests/test_batch.py", line 31, in test_rejects_non_builtin_list_inputs
+    with self.assertRaises(TypeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_rejects_non_builtin_list_inputs (test_batch.ValidateBatchTests.test_rejects_non_builtin_list_inputs) (values=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-u62liu1c/tests/test_batch.py", line 31, in test_rejects_non_builtin_list_inputs
+    with self.assertRaises(TypeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_rejects_non_builtin_list_inputs (test_batch.ValidateBatchTests.test_rejects_non_builtin_list_inputs) (values=[1, 2])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-u62liu1c/tests/test_batch.py", line 31, in test_rejects_non_builtin_list_inputs
+    with self.assertRaises(TypeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_valid_list_returns_values_in_order_without_modifying_input (test_batch.ValidateBatchTests.test_valid_list_returns_values_in_order_without_modifying_input)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-u62liu1c/tests/test_batch.py", line 21, in test_valid_list_returns_values_in_order_without_modifying_input
+    self.assertEqual(result, [3, 1, 2])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: None != [3, 1, 2]
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.001s
+
+FAILED (failures=8)

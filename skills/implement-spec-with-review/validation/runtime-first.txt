@@ -1,0 +1,279 @@
+test_claude_provider_effort_and_id (test_adapters.AdapterTests.test_claude_provider_effort_and_id) ... ok
+test_claude_structured_result (test_adapters.AdapterTests.test_claude_structured_result) ... ok
+test_codex_complete_stream (test_adapters.AdapterTests.test_codex_complete_stream) ... ok
+test_codex_noninteractive_safe_argv (test_adapters.AdapterTests.test_codex_noninteractive_safe_argv) ... ok
+test_explicit_resume_never_last (test_adapters.AdapterTests.test_explicit_resume_never_last) ... ok
+test_malformed_output_rejected (test_adapters.AdapterTests.test_malformed_output_rejected) ... ok
+test_non_success_claude_rejected (test_adapters.AdapterTests.test_non_success_claude_rejected) ... ok
+test_prompt_injection_not_shell (test_adapters.AdapterTests.test_prompt_injection_not_shell) ... ok
+test_truncated_codex_rejected (test_adapters.AdapterTests.test_truncated_codex_rejected) ... ok
+test_any_round2_gate_failure_triggers_fallback (test_engine.EngineTests.test_any_round2_gate_failure_triggers_fallback) ... ok
+test_baseline_not_silent (test_engine.EngineTests.test_baseline_not_silent) ... ok
+test_closed_regression_reopens (test_engine.EngineTests.test_closed_regression_reopens) ... ok
+test_five_round_cap_and_no_post_round5_fix (test_engine.EngineTests.test_five_round_cap_and_no_post_round5_fix) ... ok
+test_high_risk_needs_second_independent_and_survives_reload (test_engine.EngineTests.test_high_risk_needs_second_independent_and_survives_reload) ... ok
+test_implementer_cannot_close_findings (test_engine.EngineTests.test_implementer_cannot_close_findings) ... ok
+test_independent_blocking_not_silently_downgraded (test_engine.EngineTests.test_independent_blocking_not_silently_downgraded) ... ok
+test_manager_replacement_preserves_round (test_engine.EngineTests.test_manager_replacement_preserves_round) ... ok
+test_original_id_and_safe_path_mapping (test_engine.EngineTests.test_original_id_and_safe_path_mapping) ... ok
+test_rebuttal_needs_reviewer_disposition (test_engine.EngineTests.test_rebuttal_needs_reviewer_disposition) ... ok
+test_resume_must_return_requested_session (test_engine.EngineTests.test_resume_must_return_requested_session) ... ok
+test_round1_stops_when_passed (test_engine.EngineTests.test_round1_stops_when_passed) ... ok
+test_round3_fresh_and_fallback (test_engine.EngineTests.test_round3_fresh_and_fallback) ... ok
+test_session_cannot_cross_roles (test_engine.EngineTests.test_session_cannot_cross_roles) ... ok
+test_stale_review_refused (test_engine.EngineTests.test_stale_review_refused) ... ok
+test_unverified_final_prevents_overall_success (test_engine.EngineTests.test_unverified_final_prevents_overall_success) ... ok
+test_wait_answer_preserves_round_and_decisions (test_engine.EngineTests.test_wait_answer_preserves_round_and_decisions) ... ok
+test_effort_no_silent_downgrade (test_primitives.PrimitiveTests.test_effort_no_silent_downgrade) ... ok
+test_explicit_reuse (test_primitives.PrimitiveTests.test_explicit_reuse) ... ok
+test_missing_review_scope_rejected (test_primitives.PrimitiveTests.test_missing_review_scope_rejected) ... ok
+test_no_implicit_reuse (test_primitives.PrimitiveTests.test_no_implicit_reuse) ... ok
+test_partial_role_settings_preserved (test_primitives.PrimitiveTests.test_partial_role_settings_preserved) ... ok
+test_provider_mismatch_is_rejected (test_primitives.PrimitiveTests.test_provider_mismatch_is_rejected) ... ok
+test_required_budget (test_primitives.PrimitiveTests.test_required_budget) ... ok
+test_roles_are_independent (test_primitives.PrimitiveTests.test_roles_are_independent) ... ok
+test_snapshot_captures_modes_and_symlinks (test_primitives.PrimitiveTests.test_snapshot_captures_modes_and_symlinks) ... ok
+test_snapshots_include_untracked_and_dirty_but_exclude_runtime (test_primitives.PrimitiveTests.test_snapshots_include_untracked_and_dirty_but_exclude_runtime) ... ok
+test_supplied_roles_not_asked_again (test_primitives.PrimitiveTests.test_supplied_roles_not_asked_again) ... ok
+test_uncertainty_needs_evidence_and_options (test_primitives.PrimitiveTests.test_uncertainty_needs_evidence_and_options) ... ok
+test_unproven_finding_not_confirmed (test_primitives.PrimitiveTests.test_unproven_finding_not_confirmed) ... ok
+test_valid_review (test_primitives.PrimitiveTests.test_valid_review) ... ok
+test_any_round2_gate_failure_triggers_fallback (test_engine.EngineTests.test_any_round2_gate_failure_triggers_fallback) ... ok
+test_baseline_not_silent (test_engine.EngineTests.test_baseline_not_silent) ... ok
+test_closed_regression_reopens (test_engine.EngineTests.test_closed_regression_reopens) ... ok
+test_five_round_cap_and_no_post_round5_fix (test_engine.EngineTests.test_five_round_cap_and_no_post_round5_fix) ... ok
+test_high_risk_needs_second_independent_and_survives_reload (test_engine.EngineTests.test_high_risk_needs_second_independent_and_survives_reload) ... ok
+test_implementer_cannot_close_findings (test_engine.EngineTests.test_implementer_cannot_close_findings) ... ok
+test_independent_blocking_not_silently_downgraded (test_engine.EngineTests.test_independent_blocking_not_silently_downgraded) ... ok
+test_manager_replacement_preserves_round (test_engine.EngineTests.test_manager_replacement_preserves_round) ... ok
+test_original_id_and_safe_path_mapping (test_engine.EngineTests.test_original_id_and_safe_path_mapping) ... ok
+test_rebuttal_needs_reviewer_disposition (test_engine.EngineTests.test_rebuttal_needs_reviewer_disposition) ... ok
+test_resume_must_return_requested_session (test_engine.EngineTests.test_resume_must_return_requested_session) ... ok
+test_round1_stops_when_passed (test_engine.EngineTests.test_round1_stops_when_passed) ... ok
+test_round3_fresh_and_fallback (test_engine.EngineTests.test_round3_fresh_and_fallback) ... ok
+test_session_cannot_cross_roles (test_engine.EngineTests.test_session_cannot_cross_roles) ... ok
+test_stale_review_refused (test_engine.EngineTests.test_stale_review_refused) ... ok
+test_unverified_final_prevents_overall_success (test_engine.EngineTests.test_unverified_final_prevents_overall_success) ... ok
+test_wait_answer_preserves_round_and_decisions (test_engine.EngineTests.test_wait_answer_preserves_round_and_decisions) ... ok
+test_any_round2_gate_failure_triggers_fallback (test_runtime.RuntimeTests.test_any_round2_gate_failure_triggers_fallback) ... ok
+test_baseline_not_silent (test_runtime.RuntimeTests.test_baseline_not_silent) ... ok
+test_closed_regression_reopens (test_runtime.RuntimeTests.test_closed_regression_reopens) ... ok
+test_external_edit_invalidates_verified (test_runtime.RuntimeTests.test_external_edit_invalidates_verified) ... ok
+test_fake_fresh_then_reconcile_complete (test_runtime.RuntimeTests.test_fake_fresh_then_reconcile_complete) ... ERROR
+/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:1139: ResourceWarning: subprocess 34670 is still running
+  _warn("subprocess %s is still running" % self.pid,
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+test_fake_malformed_does_not_consume_round (test_runtime.RuntimeTests.test_fake_malformed_does_not_consume_round) ... /opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:1139: ResourceWarning: subprocess 34687 is still running
+  _warn("subprocess %s is still running" % self.pid,
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ERROR
+test_fake_nonzero_does_not_pass (test_runtime.RuntimeTests.test_fake_nonzero_does_not_pass) ... /opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:1139: ResourceWarning: subprocess 34704 is still running
+  _warn("subprocess %s is still running" % self.pid,
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ERROR
+test_fake_question_blocks_then_answer_resumes (test_runtime.RuntimeTests.test_fake_question_blocks_then_answer_resumes) ... ERROR
+/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:1139: ResourceWarning: subprocess 34721 is still running
+  _warn("subprocess %s is still running" % self.pid,
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+test_five_round_cap_and_no_post_round5_fix (test_runtime.RuntimeTests.test_five_round_cap_and_no_post_round5_fix) ... ok
+test_gates_have_actual_evidence (test_runtime.RuntimeTests.test_gates_have_actual_evidence) ... ok
+test_high_risk_needs_second_independent_and_survives_reload (test_runtime.RuntimeTests.test_high_risk_needs_second_independent_and_survives_reload) ... ok
+test_implementer_cannot_close_findings (test_runtime.RuntimeTests.test_implementer_cannot_close_findings) ... ok
+test_independent_blocking_not_silently_downgraded (test_runtime.RuntimeTests.test_independent_blocking_not_silently_downgraded) ... ok
+test_log_changes_do_not_invalidate (test_runtime.RuntimeTests.test_log_changes_do_not_invalidate) ... ok
+test_manager_replacement_preserves_round (test_runtime.RuntimeTests.test_manager_replacement_preserves_round) ... ok
+test_one_writer_across_runs (test_runtime.RuntimeTests.test_one_writer_across_runs) ... ok
+test_original_id_and_safe_path_mapping (test_runtime.RuntimeTests.test_original_id_and_safe_path_mapping) ... ok
+test_rebuttal_needs_reviewer_disposition (test_runtime.RuntimeTests.test_rebuttal_needs_reviewer_disposition) ... ok
+test_recover_does_not_rerun_unknown_write (test_runtime.RuntimeTests.test_recover_does_not_rerun_unknown_write) ... ok
+test_resume_must_return_requested_session (test_runtime.RuntimeTests.test_resume_must_return_requested_session) ... ok
+test_round1_stops_when_passed (test_runtime.RuntimeTests.test_round1_stops_when_passed) ... ok
+test_round3_fresh_and_fallback (test_runtime.RuntimeTests.test_round3_fresh_and_fallback) ... ok
+test_session_cannot_cross_roles (test_runtime.RuntimeTests.test_session_cannot_cross_roles) ... ok
+test_stale_review_refused (test_runtime.RuntimeTests.test_stale_review_refused) ... ok
+test_timeout_kills_process_and_no_review_credit (test_runtime.RuntimeTests.test_timeout_kills_process_and_no_review_credit) ... /opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py:1139: ResourceWarning: subprocess 34943 is still running
+  _warn("subprocess %s is still running" % self.pid,
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ERROR
+test_unverified_final_prevents_overall_success (test_runtime.RuntimeTests.test_unverified_final_prevents_overall_success) ... ok
+test_wait_answer_preserves_round_and_decisions (test_runtime.RuntimeTests.test_wait_answer_preserves_round_and_decisions) ... ok
+
+======================================================================
+ERROR: test_fake_fresh_then_reconcile_complete (test_runtime.RuntimeTests.test_fake_fresh_then_reconcile_complete)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_runtime.py", line 25, in test_fake_fresh_then_reconcile_complete
+    self.assess(); result=invoke(self.run,'1.1','review'); self.assertEqual(result['next'],'reconcile')
+                          ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/scripts/runner.py", line 145, in invoke
+    result=process(argv,work,prompt,min(s['config']['limits']['timeout_seconds'],s['config']['limits']['active_seconds']-s['metrics']['active_seconds']),s['config']['limits']['heartbeat_seconds'],started,beat)
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/scripts/runner.py", line 38, in process
+    on_start(proc.pid); sent=False; timed_out=False
+    ~~~~~~~~^^^^^^^^^^
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/scripts/runner.py", line 141, in started
+    active['pid']=pid; active['process_start']=subprocess.run(['ps','-p',str(pid),'-o','lstart='],capture_output=True,text=True).stdout.strip()
+                                               ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 555, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1039, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1990, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+PermissionError: [Errno 1] Operation not permitted: 'ps'
+
+======================================================================
+ERROR: test_fake_malformed_does_not_consume_round (test_runtime.RuntimeTests.test_fake_malformed_does_not_consume_round)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_runtime.py", line 31, in test_fake_malformed_does_not_consume_round
+    with self.assertRaises(Stop): invoke(self.run,'1.1','review')
+                                  ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/scripts/runner.py", line 145, in invoke
+    result=process(argv,work,prompt,min(s['config']['limits']['timeout_seconds'],s['config']['limits']['active_seconds']-s['metrics']['active_seconds']),s['config']['limits']['heartbeat_seconds'],started,beat)
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/scripts/runner.py", line 38, in process
+    on_start(proc.pid); sent=False; timed_out=False
+    ~~~~~~~~^^^^^^^^^^
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/scripts/runner.py", line 141, in started
+    active['pid']=pid; active['process_start']=subprocess.run(['ps','-p',str(pid),'-o','lstart='],capture_output=True,text=True).stdout.strip()
+                                               ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 555, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1039, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1990, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+PermissionError: [Errno 1] Operation not permitted: 'ps'
+
+======================================================================
+ERROR: test_fake_nonzero_does_not_pass (test_runtime.RuntimeTests.test_fake_nonzero_does_not_pass)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_runtime.py", line 36, in test_fake_nonzero_does_not_pass
+    with self.assertRaises(Stop): invoke(self.run,'1.1','review')
+                                  ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/scripts/runner.py", line 145, in invoke
+    result=process(argv,work,prompt,min(s['config']['limits']['timeout_seconds'],s['config']['limits']['active_seconds']-s['metrics']['active_seconds']),s['config']['limits']['heartbeat_seconds'],started,beat)
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/scripts/runner.py", line 38, in process
+    on_start(proc.pid); sent=False; timed_out=False
+    ~~~~~~~~^^^^^^^^^^
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/scripts/runner.py", line 141, in started
+    active['pid']=pid; active['process_start']=subprocess.run(['ps','-p',str(pid),'-o','lstart='],capture_output=True,text=True).stdout.strip()
+                                               ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 555, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1039, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1990, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+PermissionError: [Errno 1] Operation not permitted: 'ps'
+
+======================================================================
+ERROR: test_fake_question_blocks_then_answer_resumes (test_runtime.RuntimeTests.test_fake_question_blocks_then_answer_resumes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_runtime.py", line 40, in test_fake_question_blocks_then_answer_resumes
+    self.assess(); result=invoke(self.run,'1.1','review'); self.assertEqual(result['status'],'WAITING_FOR_USER')
+                          ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/scripts/runner.py", line 145, in invoke
+    result=process(argv,work,prompt,min(s['config']['limits']['timeout_seconds'],s['config']['limits']['active_seconds']-s['metrics']['active_seconds']),s['config']['limits']['heartbeat_seconds'],started,beat)
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/scripts/runner.py", line 38, in process
+    on_start(proc.pid); sent=False; timed_out=False
+    ~~~~~~~~^^^^^^^^^^
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/scripts/runner.py", line 141, in started
+    active['pid']=pid; active['process_start']=subprocess.run(['ps','-p',str(pid),'-o','lstart='],capture_output=True,text=True).stdout.strip()
+                                               ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 555, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1039, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1990, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+PermissionError: [Errno 1] Operation not permitted: 'ps'
+
+======================================================================
+ERROR: test_timeout_kills_process_and_no_review_credit (test_runtime.RuntimeTests.test_timeout_kills_process_and_no_review_credit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_runtime.py", line 46, in test_timeout_kills_process_and_no_review_credit
+    with self.assertRaises(Stop): invoke(self.run,'1.1','review')
+                                  ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/scripts/runner.py", line 145, in invoke
+    result=process(argv,work,prompt,min(s['config']['limits']['timeout_seconds'],s['config']['limits']['active_seconds']-s['metrics']['active_seconds']),s['config']['limits']['heartbeat_seconds'],started,beat)
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/scripts/runner.py", line 38, in process
+    on_start(proc.pid); sent=False; timed_out=False
+    ~~~~~~~~^^^^^^^^^^
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/scripts/runner.py", line 141, in started
+    active['pid']=pid; active['process_start']=subprocess.run(['ps','-p',str(pid),'-o','lstart='],capture_output=True,text=True).stdout.strip()
+                                               ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 555, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1039, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 1990, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+PermissionError: [Errno 1] Operation not permitted: 'ps'
+
+----------------------------------------------------------------------
+Ran 84 tests in 15.691s
+
+FAILED (errors=5)
+<sys>:0: ResourceWarning: unclosed file <_io.BufferedReader name=21>
+<sys>:0: ResourceWarning: unclosed file <_io.BufferedWriter name=17>
+<sys>:0: ResourceWarning: unclosed file <_io.BufferedReader name=19>
+<sys>:0: ResourceWarning: unclosed file <_io.BufferedReader name=18>
+<sys>:0: ResourceWarning: unclosed file <_io.BufferedWriter name=14>
+<sys>:0: ResourceWarning: unclosed file <_io.BufferedReader name=16>
+<sys>:0: ResourceWarning: unclosed file <_io.BufferedReader name=15>
+<sys>:0: ResourceWarning: unclosed file <_io.BufferedWriter name=11>
+<sys>:0: ResourceWarning: unclosed file <_io.BufferedReader name=13>
+<sys>:0: ResourceWarning: unclosed file <_io.BufferedReader name=12>
+<sys>:0: ResourceWarning: unclosed file <_io.BufferedWriter name=8>
+<sys>:0: ResourceWarning: unclosed file <_io.BufferedReader name=10>
+<sys>:0: ResourceWarning: unclosed file <_io.BufferedReader name=9>
+<sys>:0: ResourceWarning: unclosed file <_io.BufferedWriter name=6>
+<sys>:0: ResourceWarning: unclosed file <_io.BufferedReader name=7>

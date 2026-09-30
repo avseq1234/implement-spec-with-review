@@ -1,0 +1,95 @@
+test_claude_provider_effort_and_id (test_adapters.AdapterTests.test_claude_provider_effort_and_id) ... ERROR
+test_claude_structured_result (test_adapters.AdapterTests.test_claude_structured_result) ... FAIL
+test_codex_complete_stream (test_adapters.AdapterTests.test_codex_complete_stream) ... FAIL
+test_codex_noninteractive_safe_argv (test_adapters.AdapterTests.test_codex_noninteractive_safe_argv) ... FAIL
+test_explicit_resume_never_last (test_adapters.AdapterTests.test_explicit_resume_never_last) ... FAIL
+test_malformed_output_rejected (test_adapters.AdapterTests.test_malformed_output_rejected) ... FAIL
+test_non_success_claude_rejected (test_adapters.AdapterTests.test_non_success_claude_rejected) ... FAIL
+test_prompt_injection_not_shell (test_adapters.AdapterTests.test_prompt_injection_not_shell) ... FAIL
+test_truncated_codex_rejected (test_adapters.AdapterTests.test_truncated_codex_rejected) ... FAIL
+
+======================================================================
+ERROR: test_claude_provider_effort_and_id (test_adapters.AdapterTests.test_claude_provider_effort_and_id)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_adapters.py", line 21, in test_claude_provider_effort_and_id
+    self.assertEqual(a[0],'claude'); self.assertIn('--resume',a); self.assertIn('--effort',a)
+                     ~^^^
+IndexError: list index out of range
+
+======================================================================
+FAIL: test_claude_structured_result (test_adapters.AdapterTests.test_claude_structured_result)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_adapters.py", line 32, in test_claude_structured_result
+    self.assertEqual(p['session_id'],'s'); self.assertEqual(p['report'],r)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+AssertionError: None != 's'
+
+======================================================================
+FAIL: test_codex_complete_stream (test_adapters.AdapterTests.test_codex_complete_stream)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_adapters.py", line 27, in test_codex_complete_stream
+    p=parse_output('codex',stream,json.dumps(r)); self.assertEqual(p['session_id'],'sid'); self.assertEqual(p['report'],r)
+                                                  ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: None != 'sid'
+
+======================================================================
+FAIL: test_codex_noninteractive_safe_argv (test_adapters.AdapterTests.test_codex_noninteractive_safe_argv)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_adapters.py", line 13, in test_codex_noninteractive_safe_argv
+    self.assertIn('exec',a); self.assertIn('--json',a); self.assertIn('gpt-5.6-sol',a)
+    ~~~~~~~~~~~~~^^^^^^^^^^
+AssertionError: 'exec' not found in []
+
+======================================================================
+FAIL: test_explicit_resume_never_last (test_adapters.AdapterTests.test_explicit_resume_never_last)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_adapters.py", line 17, in test_explicit_resume_never_last
+    self.assertIn('resume',a); self.assertIn('known-id',a); self.assertNotIn('--last',a)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: 'resume' not found in []
+
+======================================================================
+FAIL: test_malformed_output_rejected (test_adapters.AdapterTests.test_malformed_output_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_adapters.py", line 36, in test_malformed_output_rejected
+    with self.assertRaises(Stop): parse_output('codex','garbage')
+         ~~~~~~~~~~~~~~~~~^^^^^^
+AssertionError: Stop not raised
+
+======================================================================
+FAIL: test_non_success_claude_rejected (test_adapters.AdapterTests.test_non_success_claude_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_adapters.py", line 34, in test_non_success_claude_rejected
+    with self.assertRaises(Stop): parse_output('claude',json.dumps({'type':'result','is_error':True,'session_id':'s','result':'no'}))
+         ~~~~~~~~~~~~~~~~~^^^^^^
+AssertionError: Stop not raised
+
+======================================================================
+FAIL: test_prompt_injection_not_shell (test_adapters.AdapterTests.test_prompt_injection_not_shell)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_adapters.py", line 39, in test_prompt_injection_not_shell
+    a=build_argv(c,'/tmp/repo','schema.json','out.json'); self.assertIn(c['model'],a)
+                                                          ~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: '$(touch /tmp/should-not-exist)' not found in []
+
+======================================================================
+FAIL: test_truncated_codex_rejected (test_adapters.AdapterTests.test_truncated_codex_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_adapters.py", line 29, in test_truncated_codex_rejected
+    with self.assertRaises(Stop): parse_output('codex','{"type":"thread.started","thread_id":"sid"}',json.dumps(review()))
+         ~~~~~~~~~~~~~~~~~^^^^^^
+AssertionError: Stop not raised
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.002s
+
+FAILED (failures=8, errors=1)

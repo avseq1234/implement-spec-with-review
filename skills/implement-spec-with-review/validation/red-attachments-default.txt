@@ -1,0 +1,34 @@
+test_claude_provider_effort_and_id (test_adapters.AdapterTests.test_claude_provider_effort_and_id) ... ok
+test_claude_structured_result (test_adapters.AdapterTests.test_claude_structured_result) ... ok
+test_codex_complete_stream (test_adapters.AdapterTests.test_codex_complete_stream) ... ok
+test_codex_image_is_explicit_attachment (test_adapters.AdapterTests.test_codex_image_is_explicit_attachment) ... FAIL
+test_codex_noninteractive_safe_argv (test_adapters.AdapterTests.test_codex_noninteractive_safe_argv) ... ok
+test_explicit_resume_never_last (test_adapters.AdapterTests.test_explicit_resume_never_last) ... ok
+test_malformed_output_rejected (test_adapters.AdapterTests.test_malformed_output_rejected) ... ok
+test_non_success_claude_rejected (test_adapters.AdapterTests.test_non_success_claude_rejected) ... ok
+test_prompt_injection_not_shell (test_adapters.AdapterTests.test_prompt_injection_not_shell) ... ok
+test_truncated_codex_rejected (test_adapters.AdapterTests.test_truncated_codex_rejected) ... ok
+test_verified_model_default_omits_effort_flag (test_adapters.AdapterTests.test_verified_model_default_omits_effort_flag) ... FAIL
+
+======================================================================
+FAIL: test_codex_image_is_explicit_attachment (test_adapters.AdapterTests.test_codex_image_is_explicit_attachment)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_adapters.py", line 44, in test_codex_image_is_explicit_attachment
+    self.assertIn('--image',a); self.assertIn('/tmp/diagram.png',a)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^
+AssertionError: '--image' not found in ['codex', '-a', 'never', '-s', 'workspace-write', 'exec', '-C', '/tmp/repo', '-m', 'gpt-5.6-sol', '-c', 'model_reasoning_effort="medium"', '--json', '--output-schema', 'schema.json', '-o', 'out.json', '-']
+
+======================================================================
+FAIL: test_verified_model_default_omits_effort_flag (test_adapters.AdapterTests.test_verified_model_default_omits_effort_flag)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_adapters.py", line 40, in test_verified_model_default_omits_effort_flag
+    self.assertFalse(any('model_reasoning_effort' in x for x in a))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.001s
+
+FAILED (failures=2)

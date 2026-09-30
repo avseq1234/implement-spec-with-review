@@ -1,0 +1,11 @@
+
+test_interfaces_exist (test_baseline.Baseline) ... ok
+test_negative_int_raises_value_error (test_validate_positive_integer.ValidatePositiveIntegerTests) ... ok
+test_non_builtin_int_values_raise_type_error (test_validate_positive_integer.ValidatePositiveIntegerTests) ... ok
+test_positive_builtin_int_is_returned_unchanged (test_validate_positive_integer.ValidatePositiveIntegerTests) ... ok
+test_zero_raises_value_error (test_validate_positive_integer.ValidatePositiveIntegerTests) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK

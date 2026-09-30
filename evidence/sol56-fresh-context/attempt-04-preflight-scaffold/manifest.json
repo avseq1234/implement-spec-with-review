@@ -1,0 +1,98 @@
+{
+  "documents": [
+    {
+      "path": "high-level.md",
+      "kind": "high-level"
+    },
+    {
+      "path": "openspec/tasks.md",
+      "kind": "tasks"
+    },
+    {
+      "path": "openspec/spec.md",
+      "kind": "spec"
+    },
+    {
+      "path": "openspec/design.md",
+      "kind": "design"
+    },
+    {
+      "path": "openspec/proposal.md",
+      "kind": "proposal"
+    }
+  ],
+  "constraints": [
+    "pure functions",
+    "no third-party dependencies",
+    "no scope expansion",
+    "preserve input and original files"
+  ],
+  "tasks": [
+    {
+      "id": "1.1",
+      "requirements": [
+        "R1"
+      ],
+      "acceptance": [
+        "AC1"
+      ],
+      "dependencies": [],
+      "high_risk": false,
+      "gates": [
+        {
+          "id": "suite",
+          "argv": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1.2",
+      "requirements": [
+        "R2"
+      ],
+      "acceptance": [
+        "AC2"
+      ],
+      "dependencies": [
+        "1.1"
+      ],
+      "high_risk": false,
+      "gates": [
+        {
+          "id": "suite",
+          "argv": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ]
+        }
+      ]
+    }
+  ],
+  "final_gates": [
+    {
+      "id": "suite",
+      "argv": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ]
+    }
+  ]
+}

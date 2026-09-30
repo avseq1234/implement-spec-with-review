@@ -1,0 +1,184 @@
+You are the external implementation CLI, managed by an Execution subagent. Implement ONLY the current confirmed task. Read the indexed original documents and relevant source, not just this packet. Preserve existing user changes. Do not commit, push, deploy, or change scope. Never write .spec-runs canonical logs/state or invoke runner.py; runner imports only your structured final report and isolated capture receipts.
+
+Uncertainty rule: do read-only verification first. If ambiguity, conflicting requirements, missing authorization, unclear diagrams or unresolved evidence remain, STOP affected modifications and return NEEDS_USER_INPUT with questions, evidence, options including impacts, and affected task IDs. Do not assume defaults. Existing confirmed decisions apply. Do not ask whether to continue within confirmed scope.
+
+For new behavior use RED -> minimal implementation -> GREEN -> refactor. Before implementation, write an observable acceptance/regression test, then execute the capture_command from the packet with --phase red --gate <approved-gate-id> --expected <literal assertion-failure text>. Actually inspect the failing assertion. Syntax/import/environment failures are invalid RED. Then implement and run the same capture_command with --phase green and the same gate. Capture executes exactly the approved argv and writes an isolated receipt. Do not weaken assertions, remove needed tests, skip them or fake receipts. At delivery run the full approved suite. If code was already written first, keep it, use --phase test-after, truthfully report test-after and continue verification; do not pause solely because of that deviation. Existing project code is a valid starting point. No automatic deletion to enforce TDD. Documentation/config exceptions only as explicitly confirmed in packet.
+
+Reply to EVERY unresolved finding: ACCEPT with fix and evidence, or REBUT with specification/code/test evidence. You cannot mark a finding VERIFIED_FIXED or dismiss your own rebuttal. If disagreement is genuinely uncertain, return NEEDS_USER_INPUT. No fourth reviewer or silent model downgrade.
+
+Keep all original documents accessible. On resumed/compacted sessions reread key constraints, acceptance criteria, latest decisions and unresolved findings before editing. Do not treat billed tokens as context occupancy. If context is insufficient, return NEEDS_USER_INPUT explaining the capacity issue so the manager checkpoints and applies confirmed session policy.
+
+Return only the complete JSON object required by output schema. For IMPLEMENTED include summary, acceptance IDs, responses and truthful tdd value; leave reviewer-only arrays empty. snapshot is the provided input snapshot (runner captures actual output snapshot). Do not claim overall completion; runner evaluates the gates.
+
+
+INPUT PACKET
+{
+  "task": {
+    "acceptance": [
+      "AC2"
+    ],
+    "dependencies": [
+      "1.1"
+    ],
+    "gates": [
+      {
+        "argv": [
+          "/opt/homebrew/opt/python@3.14/bin/python3.14",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "id": "suite"
+      }
+    ],
+    "high_risk": false,
+    "id": "1.2",
+    "requirements": [
+      "R2"
+    ]
+  },
+  "documents": [
+    {
+      "kind": "high-level",
+      "path": "/private/tmp/implement-spec-smoke-u62liu1c/high-level.md",
+      "sha256": "e1051dc7fac6580e98d228d292d0f97720a1d8f958237056360a86a3b6a65f95"
+    },
+    {
+      "kind": "tasks",
+      "path": "/private/tmp/implement-spec-smoke-u62liu1c/openspec/tasks.md",
+      "sha256": "8a4c5a520252913392c423b5601677cdcc4b705a5cf0a8cf6937f7989208039e"
+    },
+    {
+      "kind": "spec",
+      "path": "/private/tmp/implement-spec-smoke-u62liu1c/openspec/spec.md",
+      "sha256": "dcf3f5f6738e50258401f28094561b6e3e59fbdc655e6f8b6b9fdae3319b7edf"
+    },
+    {
+      "kind": "design",
+      "path": "/private/tmp/implement-spec-smoke-u62liu1c/openspec/design.md",
+      "sha256": "9efc467699fbe220878fcc6f1a67f26d2810ad55de9e1c16604492ab56f913fa"
+    },
+    {
+      "kind": "proposal",
+      "path": "/private/tmp/implement-spec-smoke-u62liu1c/openspec/proposal.md",
+      "sha256": "35eb885d5fa911991ac1358ebbffe35cb92d49ad72e422cb5138fd29f24910cc"
+    }
+  ],
+  "constraints": [
+    "pure functions",
+    "no third-party dependencies",
+    "no scope expansion",
+    "preserve input and original files"
+  ],
+  "snapshot": "167c8296c0d4d3165360859412dc0b4379909eced25e764d3e02f8b5817d83e6",
+  "verification_evidence": [],
+  "tdd_note": "Policy permits disclosed test-after; actual receipts below determine whether THIS implementation was test-first.",
+  "phase": "implement",
+  "decisions": [
+    {
+      "answer": "User confirmed fixture validation, Codex primary medium / reviewer high / fallback xhigh, budgets 600 seconds per call, 30 calls, 5400 active seconds, retry 1, context checkpoint-resume, no baseline exceptions. Keep original code; test-after must be disclosed and verified without pausing solely for that deviation. Documentation uses structural and independent scenario validation. Claude remains untested. Controlled fallback session-switch smoke is authorized; no fabricated production finding.\n",
+      "at": "2026-09-27T02:32:01.368418+00:00",
+      "questions": [
+        "Initial plan, roles, gates, budgets, exceptions and session policy"
+      ],
+      "scope": [
+        "1.1",
+        "1.2",
+        "_final"
+      ],
+      "version": 1
+    }
+  ],
+  "required_decision_version": 1,
+  "dependency_contracts": [
+    {
+      "id": "1.1",
+      "acceptance": [
+        "AC1"
+      ],
+      "summary": "Implemented the pure scalar validator for task 1.1 and added contract-focused unit tests. The batch placeholder remains unchanged and out of scope."
+    }
+  ],
+  "capture_command": [
+    "/opt/homebrew/opt/python@3.14/bin/python3.14",
+    "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/scripts/capture.py",
+    "--context",
+    "/private/tmp/implement-spec-smoke-u62liu1c/.spec-runs/20260927T000412+0800-086903e0/tasks/1.2-77ac319b/round-01/72df65d695564df599d63c4e0fa6264f/capture-context.json"
+  ],
+  "cumulative_diff": "diff --git a/lib.py b/lib.py\nindex 4f4e4c7..811af53 100644\n--- a/lib.py\n+++ b/lib.py\n@@ -1,5 +1,9 @@\n def validate_positive_integer(value):\n-    return None\n+    if type(value) is not int:\n+        raise TypeError(\"value must be a built-in int\")\n+    if value <= 0:\n+        raise ValueError(\"value must be greater than zero\")\n+    return value\n \n def validate_batch(values):\n     return None\n",
+  "candidate_files": {
+    ".gitignore": {
+      "sha256": "862263fa1f46c20f0d1e4dac5ffcc75abd55c08211b2c3864c5f8764b9d87793",
+      "mode": 420,
+      "symlink": false,
+      "size": 19
+    },
+    "high-level.md": {
+      "sha256": "e1051dc7fac6580e98d228d292d0f97720a1d8f958237056360a86a3b6a65f95",
+      "mode": 420,
+      "symlink": false,
+      "size": 272
+    },
+    "lib.py": {
+      "sha256": "5dbcea74bc06c6fee7267aa598ab4306e53df4d3cfd6f98cf52e9ad9a90e9d19",
+      "mode": 420,
+      "symlink": false,
+      "size": 266
+    },
+    "openspec/design.md": {
+      "sha256": "9efc467699fbe220878fcc6f1a67f26d2810ad55de9e1c16604492ab56f913fa",
+      "mode": 420,
+      "symlink": false,
+      "size": 187
+    },
+    "openspec/proposal.md": {
+      "sha256": "35eb885d5fa911991ac1358ebbffe35cb92d49ad72e422cb5138fd29f24910cc",
+      "mode": 420,
+      "symlink": false,
+      "size": 136
+    },
+    "openspec/spec.md": {
+      "sha256": "dcf3f5f6738e50258401f28094561b6e3e59fbdc655e6f8b6b9fdae3319b7edf",
+      "mode": 420,
+      "symlink": false,
+      "size": 709
+    },
+    "openspec/tasks.md": {
+      "sha256": "8a4c5a520252913392c423b5601677cdcc4b705a5cf0a8cf6937f7989208039e",
+      "mode": 420,
+      "symlink": false,
+      "size": 127
+    },
+    "tests/test_baseline.py": {
+      "sha256": "5fc0597a466e2fa9351ac0d824ae95c9f1ca5922f05ac24a83d201d565ec0b22",
+      "mode": 420,
+      "symlink": false,
+      "size": 218
+    },
+    "tests/test_positive_integer.py": {
+      "sha256": "8bc004aeb53dee57916b53ad1d1dfe733a35ad9f82da1d9236a1e4fc39537110",
+      "mode": 420,
+      "symlink": false,
+      "size": 857
+    }
+  },
+  "quality_gates": [
+    {
+      "argv": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "id": "suite"
+    }
+  ],
+  "tdd_exception": false,
+  "finding_ledger": {}
+}

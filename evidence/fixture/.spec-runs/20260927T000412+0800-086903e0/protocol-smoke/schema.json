@@ -1,0 +1,1 @@
+{"additionalProperties":false,"properties":{"marker":{"type":"string"},"ok":{"type":"boolean"}},"required":["marker","ok"],"type":"object"}

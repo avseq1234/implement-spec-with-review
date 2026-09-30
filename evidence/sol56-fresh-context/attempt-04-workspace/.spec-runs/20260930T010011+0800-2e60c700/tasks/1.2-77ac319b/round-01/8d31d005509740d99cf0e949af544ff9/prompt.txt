@@ -1,0 +1,223 @@
+You are the external implementation CLI, managed by an Execution subagent. Implement ONLY the current confirmed task. Read the indexed original documents and relevant source, not just this packet. Preserve existing user changes. Do not commit, push, deploy, or change scope. Never write .spec-runs canonical logs/state or invoke runner.py; runner imports only your structured final report and isolated capture receipts.
+
+Uncertainty rule: do read-only verification first. If ambiguity, conflicting requirements, missing authorization, unclear diagrams or unresolved evidence remain, STOP affected modifications and return NEEDS_USER_INPUT with questions, evidence, options including impacts, and affected task IDs. Do not assume defaults. Existing confirmed decisions apply. Do not ask whether to continue within confirmed scope.
+
+For new behavior use RED -> minimal implementation -> GREEN -> refactor. Before implementation, write an observable acceptance/regression test, then execute the capture_command from the packet with --phase red --gate <approved-gate-id> --expected <literal assertion-failure text>. Actually inspect the failing assertion. Syntax/import/environment failures are invalid RED. Then implement and run the same capture_command with --phase green and the same gate. Capture executes exactly the approved argv and writes an isolated receipt. Do not weaken assertions, remove needed tests, skip them or fake receipts. At delivery run the full approved suite. If code was already written first, keep it, use --phase test-after, truthfully report test-after and continue verification; do not pause solely because of that deviation. Existing project code is a valid starting point. No automatic deletion to enforce TDD. Documentation/config exceptions only as explicitly confirmed in packet.
+
+Reply to EVERY unresolved finding: ACCEPT with fix and evidence, or REBUT with specification/code/test evidence. You cannot mark a finding VERIFIED_FIXED or dismiss your own rebuttal. If disagreement is genuinely uncertain, return NEEDS_USER_INPUT. No fourth reviewer or silent model downgrade.
+
+Keep all original documents accessible. On resumed/compacted sessions reread key constraints, acceptance criteria, latest decisions and unresolved findings before editing. Do not treat billed tokens as context occupancy. If context is insufficient, return NEEDS_USER_INPUT explaining the capacity issue so the manager checkpoints and applies confirmed session policy.
+
+Return only the complete JSON object required by output schema. For IMPLEMENTED include summary, acceptance IDs, responses and truthful tdd value; leave reviewer-only arrays empty. snapshot is the provided input snapshot (runner captures actual output snapshot). Do not claim overall completion; runner evaluates the gates.
+
+Do not create daemon/background jobs or detach process groups. If implementation or validation requires a persistent service, return NEEDS_USER_INPUT for an explicitly bounded isolated lifecycle strategy before starting it.
+
+
+INPUT PACKET
+{
+  "task": {
+    "acceptance": [
+      "AC2"
+    ],
+    "dependencies": [
+      "1.1"
+    ],
+    "gates": [
+      {
+        "argv": [
+          "/Library/Developer/CommandLineTools/usr/bin/python3",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "id": "suite"
+      }
+    ],
+    "high_risk": false,
+    "id": "1.2",
+    "requirements": [
+      "R2"
+    ],
+    "scenarios": [
+      "only a built-in list is accepted",
+      "returns a new list in input order and preserves input",
+      "empty list returns a new empty list",
+      "each element uses the exact R1 contract",
+      "first invalid element propagates TypeError or ValueError with no partial result",
+      "empty, valid, invalid element, input type, and preservation paths are tested"
+    ]
+  },
+  "documents": [
+    {
+      "kind": "high-level",
+      "path": "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/high-level.md",
+      "sha256": "e1051dc7fac6580e98d228d292d0f97720a1d8f958237056360a86a3b6a65f95"
+    },
+    {
+      "kind": "proposal",
+      "path": "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/openspec/proposal.md",
+      "sha256": "35eb885d5fa911991ac1358ebbffe35cb92d49ad72e422cb5138fd29f24910cc"
+    },
+    {
+      "kind": "design",
+      "path": "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/openspec/design.md",
+      "sha256": "9efc467699fbe220878fcc6f1a67f26d2810ad55de9e1c16604492ab56f913fa"
+    },
+    {
+      "kind": "tasks",
+      "path": "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/openspec/tasks.md",
+      "sha256": "8a4c5a520252913392c423b5601677cdcc4b705a5cf0a8cf6937f7989208039e"
+    },
+    {
+      "kind": "spec",
+      "path": "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/openspec/spec.md",
+      "sha256": "dcf3f5f6738e50258401f28094561b6e3e59fbdc655e6f8b6b9fdae3319b7edf"
+    }
+  ],
+  "constraints": [
+    "pure side-effect-free Python validation library",
+    "no third-party dependencies",
+    "preserve caller input",
+    "no network, logging, persistence, CLI application, or scope expansion",
+    "preserve existing code and truthfully disclose any test-after work"
+  ],
+  "snapshot": "ca0ed2b5141656429830ea4cb2353a3cb71d074c08fb8b2fe758b9d9d0ab1f31",
+  "verification_evidence": [
+    {
+      "after_snapshot": "96d06ef65ed142ba17dd1655fbad42d86415aa655caa6398cd88634db68e4d69",
+      "approved_baseline": false,
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "duration_seconds": 0.06647610664367676,
+      "exit_code": 0,
+      "expected_failure": "",
+      "finished_at": 1790701226.486793,
+      "gate": "suite",
+      "id": "1af07bd87b5b4f069a1c86c3064b1b46",
+      "invocation": null,
+      "output_sha256": "d96ae483709b8a2dce3bf1ab67b3fc0a045a0b0227ef758213664af320a65ea5",
+      "phase": "baseline",
+      "red_expected": false,
+      "snapshot": "96d06ef65ed142ba17dd1655fbad42d86415aa655caa6398cd88634db68e4d69",
+      "started_at": 1790701226.420317,
+      "timeout": false
+    }
+  ],
+  "tdd_note": "Policy permits disclosed test-after; actual receipts below determine whether THIS implementation was test-first.",
+  "phase": "implement",
+  "decisions": [
+    {
+      "answer": "採用以上設定，完成 preflight 無新問題後執行\n\nThe confirmed scope is: orchestration SOL 5.6/high; external Codex CLI primary gpt-5.6-sol/medium, reviewer gpt-5.6-sol/high, fallback gpt-5.6-sol/xhigh; timeout 600 seconds, maximum 30 calls, active runtime 5400 seconds, infrastructure retry 1, heartbeat 5 seconds; checkpoint-resume with unknown occupancy preserved as unknown; sequential original tasks 1.1 then 1.2 and final integration; both ordinary risk; no baseline exceptions, task splitting, or reordering; full gate python3 -m unittest discover -s tests -v using the resolved interpreter; no extra lint/typecheck; fresh management pair per task and final; real Codex CLI authorization only for this synthetic fixture; no push, merge, deployment, or real project changes; preserve existing code; disclose test-after without pausing solely because code preceded tests; use TDD for new behavior.\n",
+      "at": "2026-09-29T17:00:38.291285+00:00",
+      "category": "plan",
+      "questions": [
+        "Initial plan, roles, gates, budgets, exceptions and session policy"
+      ],
+      "scope": [
+        "1.1",
+        "1.2",
+        "_final"
+      ],
+      "version": 1
+    }
+  ],
+  "required_decision_version": 1,
+  "dependency_contracts": [
+    {
+      "id": "1.1",
+      "acceptance": [
+        "AC1"
+      ],
+      "summary": "Implemented the exact built-in positive integer contract in validate_positive_integer and added normal, boundary, identity-preservation, type-error, and value-error tests. Meaningful RED was captured with the expected assertion failure (receipt 4184a49231aa407dac5850c26929d29c); the approved full suite then passed 5 tests (GREEN receipt 8730beb037be4a08bac318ac94957adc). Task 1.2 remained unchanged."
+    }
+  ],
+  "capture_command": [
+    "/Library/Developer/CommandLineTools/usr/bin/python3",
+    "/Users/weihongda/.codex/skills/implement-spec-with-review/scripts/capture.py",
+    "--context",
+    "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/.spec-runs/20260930T010011+0800-2e60c700/tasks/1.2-77ac319b/round-01/8d31d005509740d99cf0e949af544ff9/capture-context.json"
+  ],
+  "cumulative_diff": "diff --git a/lib.py b/lib.py\nindex 4f4e4c7..a0b7839 100644\n--- a/lib.py\n+++ b/lib.py\n@@ -1,5 +1,9 @@\n def validate_positive_integer(value):\n-    return None\n+    if type(value) is not int:\n+        raise TypeError(\"value must be a built-in int\")\n+    if value <= 0:\n+        raise ValueError(\"value must be positive\")\n+    return value\n \n def validate_batch(values):\n     return None\n",
+  "candidate_files": {
+    ".gitignore": {
+      "sha256": "862263fa1f46c20f0d1e4dac5ffcc75abd55c08211b2c3864c5f8764b9d87793",
+      "mode": 420,
+      "symlink": false,
+      "size": 19
+    },
+    "high-level.md": {
+      "sha256": "e1051dc7fac6580e98d228d292d0f97720a1d8f958237056360a86a3b6a65f95",
+      "mode": 420,
+      "symlink": false,
+      "size": 272
+    },
+    "lib.py": {
+      "sha256": "031e3d891a59348d987b0ac4a6bf26414353c96b4aba5b644a4c54ea55062bec",
+      "mode": 420,
+      "symlink": false,
+      "size": 257
+    },
+    "openspec/design.md": {
+      "sha256": "9efc467699fbe220878fcc6f1a67f26d2810ad55de9e1c16604492ab56f913fa",
+      "mode": 420,
+      "symlink": false,
+      "size": 187
+    },
+    "openspec/proposal.md": {
+      "sha256": "35eb885d5fa911991ac1358ebbffe35cb92d49ad72e422cb5138fd29f24910cc",
+      "mode": 420,
+      "symlink": false,
+      "size": 136
+    },
+    "openspec/spec.md": {
+      "sha256": "dcf3f5f6738e50258401f28094561b6e3e59fbdc655e6f8b6b9fdae3319b7edf",
+      "mode": 420,
+      "symlink": false,
+      "size": 709
+    },
+    "openspec/tasks.md": {
+      "sha256": "8a4c5a520252913392c423b5601677cdcc4b705a5cf0a8cf6937f7989208039e",
+      "mode": 420,
+      "symlink": false,
+      "size": 127
+    },
+    "tests/test_baseline.py": {
+      "sha256": "5fc0597a466e2fa9351ac0d824ae95c9f1ca5922f05ac24a83d201d565ec0b22",
+      "mode": 420,
+      "symlink": false,
+      "size": 218
+    },
+    "tests/test_positive_integer.py": {
+      "sha256": "b4d201aacd82c4c69405c6f84fd193ea9b93bc873db5d8a16a5a40cae7f3fc95",
+      "mode": 420,
+      "symlink": false,
+      "size": 1016
+    }
+  },
+  "quality_gates": [
+    {
+      "argv": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "id": "suite"
+    }
+  ],
+  "tdd_exception": false,
+  "finding_ledger": {}
+}

@@ -1,0 +1,3 @@
+# Requirements and scenarios
+R1 / AC1: validate_positive_integer(value) accepts built-in int (type(value) is int) greater than zero and returns the same value. bool, floats, strings, None and other types raise TypeError. Zero and negative ints raise ValueError. Test normal, boundary and error paths.
+R2 / AC2: validate_batch(values) accepts a built-in list only, else TypeError. It returns a NEW list of validated integers in input order, without modifying input. Empty list returns a new empty list. Every element uses the exact R1 contract. First invalid element raises the same TypeError or ValueError; no partial result is returned. Test empty, valid, invalid element, input type and input preservation.

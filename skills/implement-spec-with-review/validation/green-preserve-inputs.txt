@@ -1,0 +1,6 @@
+test_prompt_preserves_existing_spec_inputs_directory (test_runtime.RuntimeTests.test_prompt_preserves_existing_spec_inputs_directory) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.243s
+
+OK

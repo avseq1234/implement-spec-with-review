@@ -1,0 +1,57 @@
+{
+  "result": "PASS",
+  "run": "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/.spec-runs/20260930T010011+0800-2e60c700",
+  "candidate_snapshot": "2fdbed3d98270ab127413a458e7b9bbd2af4df48cb3c7a093c74ed07554cf4f9",
+  "tasks": {
+    "1.1": {
+      "status": "VERIFIED",
+      "round": 1,
+      "snapshot": "ca0ed2b5141656429830ea4cb2353a3cb71d074c08fb8b2fe758b9d9d0ab1f31",
+      "managers": {
+        "execution": "/root/sol56_fresh_orchestrator_v4/task_1_1_execution",
+        "review": "/root/sol56_fresh_orchestrator_v4/task_1_1_review"
+      },
+      "fallback": false
+    },
+    "1.2": {
+      "status": "VERIFIED",
+      "round": 1,
+      "snapshot": "2fdbed3d98270ab127413a458e7b9bbd2af4df48cb3c7a093c74ed07554cf4f9",
+      "managers": {
+        "execution": "/root/sol56_fresh_orchestrator_v4/task_1_2_execution",
+        "review": "/root/sol56_fresh_orchestrator_v4/task_1_2_review"
+      },
+      "fallback": false
+    },
+    "_final": {
+      "status": "VERIFIED",
+      "round": 1,
+      "snapshot": "2fdbed3d98270ab127413a458e7b9bbd2af4df48cb3c7a093c74ed07554cf4f9",
+      "managers": {
+        "execution": "/root/sol56_fresh_orchestrator_v4/final_execution",
+        "review": "/root/sol56_fresh_orchestrator_v4/final_review"
+      },
+      "fallback": false
+    }
+  },
+  "journal_frames_verified": 62,
+  "evidence_output_hashes_verified": 10,
+  "distinct_managers": 6,
+  "sessions": 6,
+  "metrics": {
+    "active_seconds": 1105.8746316471686,
+    "calls": 10,
+    "cost": null,
+    "tokens": null,
+    "user_wait_seconds": 0.0
+  },
+  "skill_unchanged_during_attempt": true,
+  "failed_invocations": [
+    {
+      "id": "739dd08b3d8a44ee9ed34369a12c69d2",
+      "task": "1.2",
+      "error": "CLI timeout or nonzero exit; no review credit",
+      "review_credit": 0
+    }
+  ]
+}

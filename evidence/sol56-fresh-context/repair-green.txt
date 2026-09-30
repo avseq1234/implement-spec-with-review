@@ -1,0 +1,6 @@
+test_missing_process_inspection_stops_before_provider_and_budget (test_runtime.RuntimeTests.test_missing_process_inspection_stops_before_provider_and_budget) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.199s
+
+OK

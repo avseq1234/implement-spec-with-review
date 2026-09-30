@@ -1,0 +1,11 @@
+
+test_interfaces_exist (test_baseline.Baseline) ... ok
+test_accepts_boundary_value_one (test_positive_integer.ValidatePositiveIntegerTests) ... ok
+test_accepts_positive_builtin_integer_and_preserves_identity (test_positive_integer.ValidatePositiveIntegerTests) ... ok
+test_rejects_non_builtin_integers_with_type_error (test_positive_integer.ValidatePositiveIntegerTests) ... ok
+test_rejects_zero_and_negative_integers_with_value_error (test_positive_integer.ValidatePositiveIntegerTests) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK

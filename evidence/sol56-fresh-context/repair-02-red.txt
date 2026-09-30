@@ -1,0 +1,59 @@
+test_fixture_help_has_no_filesystem_side_effect (test_fresh_context_regressions.FreshContextRegressions.test_fixture_help_has_no_filesystem_side_effect) ... FAIL
+test_implementation_updates_overall_status (test_fresh_context_regressions.FreshContextRegressions.test_implementation_updates_overall_status) ... FAIL
+test_review_rejects_unaccounted_source_drift (test_fresh_context_regressions.FreshContextRegressions.test_review_rejects_unaccounted_source_drift) ... FAIL
+test_saved_independent_cannot_be_overwritten (test_fresh_context_regressions.FreshContextRegressions.test_saved_independent_cannot_be_overwritten) ... FAIL
+
+======================================================================
+FAIL: test_fixture_help_has_no_filesystem_side_effect (test_fresh_context_regressions.FreshContextRegressions.test_fixture_help_has_no_filesystem_side_effect)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_fresh_context_regressions.py", line 18, in test_fixture_help_has_no_filesystem_side_effect
+    make_fixture.main()
+    ~~~~~~~~~~~~~~~~~^^
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/scripts/make_fixture.py", line 11, in main
+    repo=Path(tempfile.mkdtemp(prefix='implement-spec-smoke-',dir='/private/tmp'))
+              ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/mock.py", line 1176, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/mock.py", line 1180, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.4/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/mock.py", line 1241, in _execute_mock_call
+    raise effect
+AssertionError: help created a fixture
+
+======================================================================
+FAIL: test_implementation_updates_overall_status (test_fresh_context_regressions.FreshContextRegressions.test_implementation_updates_overall_status)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_fresh_context_regressions.py", line 26, in test_implementation_updates_overall_status
+    self.assertEqual(self.run.state['status'], 'REVIEWING')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'IMPLEMENTING' != 'REVIEWING'
+- IMPLEMENTING
++ REVIEWING
+
+
+======================================================================
+FAIL: test_review_rejects_unaccounted_source_drift (test_fresh_context_regressions.FreshContextRegressions.test_review_rejects_unaccounted_source_drift)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_fresh_context_regressions.py", line 31, in test_review_rejects_unaccounted_source_drift
+    with self.assertRaisesRegex(Stop, 'snapshot'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+AssertionError: Stop not raised
+
+======================================================================
+FAIL: test_saved_independent_cannot_be_overwritten (test_fresh_context_regressions.FreshContextRegressions.test_saved_independent_cannot_be_overwritten)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_fresh_context_regressions.py", line 37, in test_saved_independent_cannot_be_overwritten
+    with self.assertRaisesRegex(Stop, 'independent'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Stop not raised
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.693s
+
+FAILED (failures=4)

@@ -1,0 +1,108 @@
+You are the selected external reviewer CLI, managed by a Review subagent. Work in the isolated candidate copy; never modify delivery source, specs, tests or canonical logs. The candidate snapshot ID in the packet identifies the original repository's code, not the copy's git HEAD. Do not commit. Any writable reproduction requires a separate isolated scratch directory and must not alter this candidate. If sandbox prevents a necessary reproduction, report it as unverified or NEEDS_USER_INPUT; do not bypass permissions.
+
+Read the original document copies, acceptance criteria, candidate source, relevant callers/interfaces, dependencies, and cumulative task changes. Review normal, boundary/error paths, real requirements coverage, integration with previous tasks, relevant security/data integrity/concurrency/performance/compatibility, out-of-scope changes, TODO/stub/workarounds. Find all evidence-supported defects, not just the first; no quotas or stylistic filler. A later review still covers task whole, not only known findings or delta.
+
+If phase=independent: form your OWN findings first. Do NOT look for previous review logs, conclusions or ledgers. Return and let runner durably save your complete independent report. In phase=reconcile, reread your saved independent findings, then compare the supplied previous ledger, rebuttals and decisions. Deduplicate with stable IDs. Do not erase an independent issue without explicit evidence-based disposition. Reappearing defects are OPEN even if previously fixed. Do not silently change a blocking finding into a non-blocking one.
+
+Each finding: stable ID, P0/P1/P2/P3, blocking boolean, file/line, violated requirement, trigger, impact, concrete evidence/reproduction and fix/verification direction. Unproven suspicions are not confirmed findings. Investigate read-only; unresolved ambiguity returns NEEDS_USER_INPUT (questions, evidence, options+impacts, affected task IDs). A reviewer opinion cannot replace a user decision. For known fixes use VERIFIED_FIXED only after verifying evidence; rebuttals can be DISMISSED_WITH_EVIDENCE or reopened. Never close without evidence.
+
+Report coverage by acceptance ID, unverified items and reasons, and all scope_checked categories: requirements, normal, boundary, error, tests, callers, interfaces, cumulative_changes, security, data_integrity, concurrency, performance, compatibility, scope. Return schema-complete JSON with REVIEW_COMPLETE and the EXACT input snapshot. Unneeded fields use empty arrays, tdd=not-applicable. Do not infer the task passed from prior review status. Runner determines rounds and gates.
+
+
+INPUT PACKET
+{
+  "task": {
+    "acceptance": [
+      "AC1"
+    ],
+    "dependencies": [],
+    "gates": [
+      {
+        "argv": [
+          "/opt/homebrew/opt/python@3.14/bin/python3.14",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "id": "suite"
+      }
+    ],
+    "high_risk": false,
+    "id": "1.1",
+    "requirements": [
+      "R1"
+    ]
+  },
+  "documents": [
+    {
+      "path": "/private/tmp/implement-spec-smoke-u62liu1c/.spec-runs/20260927T000412+0800-086903e0/tasks/1.1-b05e2447/review-workspaces/ce4033bf280346d7b6cd58bca2705e5d/_spec_inputs/0-high-level.md",
+      "kind": "high-level",
+      "sha256": "e1051dc7fac6580e98d228d292d0f97720a1d8f958237056360a86a3b6a65f95"
+    },
+    {
+      "path": "/private/tmp/implement-spec-smoke-u62liu1c/.spec-runs/20260927T000412+0800-086903e0/tasks/1.1-b05e2447/review-workspaces/ce4033bf280346d7b6cd58bca2705e5d/_spec_inputs/1-tasks.md",
+      "kind": "tasks",
+      "sha256": "8a4c5a520252913392c423b5601677cdcc4b705a5cf0a8cf6937f7989208039e"
+    },
+    {
+      "path": "/private/tmp/implement-spec-smoke-u62liu1c/.spec-runs/20260927T000412+0800-086903e0/tasks/1.1-b05e2447/review-workspaces/ce4033bf280346d7b6cd58bca2705e5d/_spec_inputs/2-spec.md",
+      "kind": "spec",
+      "sha256": "dcf3f5f6738e50258401f28094561b6e3e59fbdc655e6f8b6b9fdae3319b7edf"
+    },
+    {
+      "path": "/private/tmp/implement-spec-smoke-u62liu1c/.spec-runs/20260927T000412+0800-086903e0/tasks/1.1-b05e2447/review-workspaces/ce4033bf280346d7b6cd58bca2705e5d/_spec_inputs/3-design.md",
+      "kind": "design",
+      "sha256": "9efc467699fbe220878fcc6f1a67f26d2810ad55de9e1c16604492ab56f913fa"
+    },
+    {
+      "path": "/private/tmp/implement-spec-smoke-u62liu1c/.spec-runs/20260927T000412+0800-086903e0/tasks/1.1-b05e2447/review-workspaces/ce4033bf280346d7b6cd58bca2705e5d/_spec_inputs/4-proposal.md",
+      "kind": "proposal",
+      "sha256": "35eb885d5fa911991ac1358ebbffe35cb92d49ad72e422cb5138fd29f24910cc"
+    }
+  ],
+  "constraints": [
+    "pure functions",
+    "no third-party dependencies",
+    "no scope expansion",
+    "preserve input and original files"
+  ],
+  "snapshot": "167c8296c0d4d3165360859412dc0b4379909eced25e764d3e02f8b5817d83e6",
+  "phase": "independent",
+  "decisions": [
+    {
+      "version": 1,
+      "answer": "User confirmed fixture validation, Codex primary medium / reviewer high / fallback xhigh, budgets 600 seconds per call, 30 calls, 5400 active seconds, retry 1, context checkpoint-resume, no baseline exceptions. Keep original code; test-after must be disclosed and verified without pausing solely for that deviation. Documentation uses structural and independent scenario validation. Claude remains untested. Controlled fallback session-switch smoke is authorized; no fabricated production finding.\n",
+      "scope": [
+        "1.1",
+        "1.2",
+        "_final"
+      ]
+    }
+  ],
+  "required_decision_version": 1,
+  "dependency_contracts": [],
+  "capture_command": [
+    "/opt/homebrew/opt/python@3.14/bin/python3.14",
+    "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/scripts/capture.py",
+    "--context",
+    "/private/tmp/implement-spec-smoke-u62liu1c/.spec-runs/20260927T000412+0800-086903e0/tasks/1.1-b05e2447/round-01/ce4033bf280346d7b6cd58bca2705e5d/capture-context.json"
+  ],
+  "quality_gates": [
+    {
+      "argv": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "id": "suite"
+    }
+  ],
+  "tdd_exception": false
+}

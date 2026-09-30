@@ -1,0 +1,15 @@
+test_prompt_preserves_existing_spec_inputs_directory (test_runtime.RuntimeTests.test_prompt_preserves_existing_spec_inputs_directory) ... FAIL
+
+======================================================================
+FAIL: test_prompt_preserves_existing_spec_inputs_directory (test_runtime.RuntimeTests.test_prompt_preserves_existing_spec_inputs_directory)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/tools/implement-spec-with-review/tests/test_runtime.py", line 29, in test_prompt_preserves_existing_spec_inputs_directory
+    self.assertTrue((original/'user.txt').exists())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 1 test in 0.228s
+
+FAILED (failures=1)

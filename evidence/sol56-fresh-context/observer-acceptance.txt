@@ -1,0 +1,12 @@
+test_batch_order_copy_empty (__main__.Acceptance.test_batch_order_copy_empty) ... ok
+test_exact_int_type (__main__.Acceptance.test_exact_int_type) ... ok
+test_exact_list_type (__main__.Acceptance.test_exact_list_type) ... ok
+test_first_error_and_preservation (__main__.Acceptance.test_first_error_and_preservation) ... ok
+test_no_console_side_effects (__main__.Acceptance.test_no_console_side_effects) ... ok
+test_nonpositive_values (__main__.Acceptance.test_nonpositive_values) ... ok
+test_positive_builtin_ints (__main__.Acceptance.test_positive_builtin_ints) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.000s
+
+OK

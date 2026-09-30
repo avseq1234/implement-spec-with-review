@@ -1,0 +1,94 @@
+
+test_interfaces_exist (test_baseline.Baseline) ... ok
+test_empty_list_returns_a_new_empty_list (test_validate_batch.ValidateBatchTests) ... FAIL
+test_invalid_element_propagates_exact_exception_without_continuing (test_validate_batch.ValidateBatchTests) ... FAIL
+test_non_builtin_list_inputs_raise_type_error (test_validate_batch.ValidateBatchTests) ... test_real_scalar_errors_are_preserved (test_validate_batch.ValidateBatchTests) ... test_valid_values_preserve_order_and_input (test_validate_batch.ValidateBatchTests) ... FAIL
+test_negative_int_raises_value_error (test_validate_positive_integer.ValidatePositiveIntegerTests) ... ok
+test_non_builtin_int_values_raise_type_error (test_validate_positive_integer.ValidatePositiveIntegerTests) ... ok
+test_positive_builtin_int_is_returned_unchanged (test_validate_positive_integer.ValidatePositiveIntegerTests) ... ok
+test_zero_raises_value_error (test_validate_positive_integer.ValidatePositiveIntegerTests) ... ok
+
+======================================================================
+FAIL: test_empty_list_returns_a_new_empty_list (test_validate_batch.ValidateBatchTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-59296sn_/tests/test_validate_batch.py", line 13, in test_empty_list_returns_a_new_empty_list
+    self.assertEqual(result, [])
+AssertionError: None != []
+
+======================================================================
+FAIL: test_invalid_element_propagates_exact_exception_without_continuing (test_validate_batch.ValidateBatchTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-59296sn_/tests/test_validate_batch.py", line 41, in test_invalid_element_propagates_exact_exception_without_continuing
+    lib.validate_batch(values)
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_non_builtin_list_inputs_raise_type_error (test_validate_batch.ValidateBatchTests) (values=())
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-59296sn_/tests/test_validate_batch.py", line 66, in test_non_builtin_list_inputs_raise_type_error
+    lib.validate_batch(values)
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_non_builtin_list_inputs_raise_type_error (test_validate_batch.ValidateBatchTests) (values='')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-59296sn_/tests/test_validate_batch.py", line 66, in test_non_builtin_list_inputs_raise_type_error
+    lib.validate_batch(values)
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_non_builtin_list_inputs_raise_type_error (test_validate_batch.ValidateBatchTests) (values=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-59296sn_/tests/test_validate_batch.py", line 66, in test_non_builtin_list_inputs_raise_type_error
+    lib.validate_batch(values)
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_non_builtin_list_inputs_raise_type_error (test_validate_batch.ValidateBatchTests) (values={1: 2})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-59296sn_/tests/test_validate_batch.py", line 66, in test_non_builtin_list_inputs_raise_type_error
+    lib.validate_batch(values)
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_non_builtin_list_inputs_raise_type_error (test_validate_batch.ValidateBatchTests) (values=[1])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-59296sn_/tests/test_validate_batch.py", line 66, in test_non_builtin_list_inputs_raise_type_error
+    lib.validate_batch(values)
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_real_scalar_errors_are_preserved (test_validate_batch.ValidateBatchTests) (values=[1, True, 2])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-59296sn_/tests/test_validate_batch.py", line 55, in test_real_scalar_errors_are_preserved
+    lib.validate_batch(values)
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_real_scalar_errors_are_preserved (test_validate_batch.ValidateBatchTests) (values=[1, 0, 2])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-59296sn_/tests/test_validate_batch.py", line 55, in test_real_scalar_errors_are_preserved
+    lib.validate_batch(values)
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_valid_values_preserve_order_and_input (test_validate_batch.ValidateBatchTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/private/tmp/implement-spec-smoke-59296sn_/tests/test_validate_batch.py", line 23, in test_valid_values_preserve_order_and_input
+    self.assertEqual(result, [3, 1, 2])
+AssertionError: None != [3, 1, 2]
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.001s
+
+FAILED (failures=10)

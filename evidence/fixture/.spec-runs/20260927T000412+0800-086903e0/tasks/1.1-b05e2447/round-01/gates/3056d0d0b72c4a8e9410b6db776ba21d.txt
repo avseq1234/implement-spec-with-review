@@ -1,0 +1,10 @@
+
+test_interfaces_exist (test_baseline.Baseline.test_interfaces_exist) ... ok
+test_accepts_positive_builtin_integers (test_positive_integer.ValidatePositiveIntegerTests.test_accepts_positive_builtin_integers) ... ok
+test_rejects_bool_and_other_non_builtin_integer_types (test_positive_integer.ValidatePositiveIntegerTests.test_rejects_bool_and_other_non_builtin_integer_types) ... ok
+test_rejects_zero_and_negative_integers (test_positive_integer.ValidatePositiveIntegerTests.test_rejects_zero_and_negative_integers) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK

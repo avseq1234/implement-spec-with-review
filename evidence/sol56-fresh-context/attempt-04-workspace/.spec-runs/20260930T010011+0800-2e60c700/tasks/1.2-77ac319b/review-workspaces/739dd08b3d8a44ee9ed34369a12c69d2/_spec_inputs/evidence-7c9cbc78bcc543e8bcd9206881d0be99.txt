@@ -1,0 +1,85 @@
+
+test_interfaces_exist (test_baseline.Baseline) ... ok
+test_empty_list_returns_distinct_empty_list (test_batch.ValidateBatchTests) ... FAIL
+test_propagates_first_invalid_element_error_without_mutation (test_batch.ValidateBatchTests) ... test_rejects_non_builtin_lists_with_type_error (test_batch.ValidateBatchTests) ... test_validates_values_in_order_and_preserves_input (test_batch.ValidateBatchTests) ... FAIL
+test_accepts_boundary_value_one (test_positive_integer.ValidatePositiveIntegerTests) ... ok
+test_accepts_positive_builtin_integer_and_preserves_identity (test_positive_integer.ValidatePositiveIntegerTests) ... ok
+test_rejects_non_builtin_integers_with_type_error (test_positive_integer.ValidatePositiveIntegerTests) ... ok
+test_rejects_zero_and_negative_integers_with_value_error (test_positive_integer.ValidatePositiveIntegerTests) ... ok
+
+======================================================================
+FAIL: test_empty_list_returns_distinct_empty_list (test_batch.ValidateBatchTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/tests/test_batch.py", line 16, in test_empty_list_returns_distinct_empty_list
+    self.assertEqual(result, [])
+AssertionError: None != []
+
+======================================================================
+FAIL: test_propagates_first_invalid_element_error_without_mutation (test_batch.ValidateBatchTests) (values=[2, 0, 'later'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/tests/test_batch.py", line 45, in test_propagates_first_invalid_element_error_without_mutation
+    lib.validate_batch(values)
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_propagates_first_invalid_element_error_without_mutation (test_batch.ValidateBatchTests) (values=[2, True])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/tests/test_batch.py", line 45, in test_propagates_first_invalid_element_error_without_mutation
+    lib.validate_batch(values)
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_rejects_non_builtin_lists_with_type_error (test_batch.ValidateBatchTests) (values=())
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/tests/test_batch.py", line 35, in test_rejects_non_builtin_lists_with_type_error
+    lib.validate_batch(values)
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_rejects_non_builtin_lists_with_type_error (test_batch.ValidateBatchTests) (values='')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/tests/test_batch.py", line 35, in test_rejects_non_builtin_lists_with_type_error
+    lib.validate_batch(values)
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_rejects_non_builtin_lists_with_type_error (test_batch.ValidateBatchTests) (values=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/tests/test_batch.py", line 35, in test_rejects_non_builtin_lists_with_type_error
+    lib.validate_batch(values)
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_rejects_non_builtin_lists_with_type_error (test_batch.ValidateBatchTests) (values={1, 2})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/tests/test_batch.py", line 35, in test_rejects_non_builtin_lists_with_type_error
+    lib.validate_batch(values)
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_rejects_non_builtin_lists_with_type_error (test_batch.ValidateBatchTests) (values=[1, 2])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/tests/test_batch.py", line 35, in test_rejects_non_builtin_lists_with_type_error
+    lib.validate_batch(values)
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_validates_values_in_order_and_preserves_input (test_batch.ValidateBatchTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/weihongda/projects/choreshandling/output/implement-spec-with-review-validation/sol56-fresh-context/attempt-04-workspace/tests/test_batch.py", line 25, in test_validates_values_in_order_and_preserves_input
+    self.assertEqual(result, [3, 1, 2])
+AssertionError: None != [3, 1, 2]
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.001s
+
+FAILED (failures=9)
